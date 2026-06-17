@@ -157,20 +157,26 @@
       white-space: nowrap;
     }
     .version-badge {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 120;
       flex: 0 0 auto;
       min-height: 28px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid rgba(23, 20, 17, .14);
+      border: 1px solid rgba(176, 138, 82, .38);
       border-radius: 999px;
       padding: 4px 9px;
-      color: rgba(23, 20, 17, .58);
-      background: rgba(251, 248, 242, .72);
+      color: rgba(23, 20, 17, .72);
+      background: rgba(251, 248, 242, .92);
+      box-shadow: 0 6px 18px rgba(23, 20, 17, .08);
       font-size: 11px;
       font-weight: 650;
       line-height: 1;
       white-space: nowrap;
+      pointer-events: none;
     }
     .mobile-top-call {
       display: none;
@@ -1387,7 +1393,8 @@
       }
       .phone, .nav-actions .btn { display: none; }
       .version-badge {
-        margin-left: auto;
+        top: 68px;
+        right: var(--mobile-gutter);
         padding-inline: 8px;
         font-size: 10px;
       }
