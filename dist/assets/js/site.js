@@ -30,6 +30,33 @@ document.querySelectorAll(".faq-question").forEach((button) => {
   });
 });
 
+const revealGroups = [
+  ".page-hero .hero-inner > *",
+  ".legal-header .container > *",
+  ".section-head > *",
+  ".grid-2 > *",
+  ".grid-3 > *",
+  ".grid-4 > *",
+  ".gallery > *",
+  ".steps > *",
+  ".faq-list > *",
+  ".contact-grid > *",
+  ".cta-inner > *",
+  ".legal-content > *",
+  ".footer-grid > *",
+];
+
+revealGroups.forEach((selector) => {
+  document.querySelectorAll(selector).forEach((node, index) => {
+    if (node.closest(".site-header, .mobile-actions")) return;
+    node.classList.add("reveal");
+    node.style.setProperty("--reveal-delay", `${Math.min(index % 6, 5) * 75}ms`);
+    if (node.matches(".service-card, .content-card, .info-card, .form-card, figure")) {
+      node.classList.add("reveal-scale");
+    }
+  });
+});
+
 const observer = "IntersectionObserver" in window
   ? new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -38,7 +65,7 @@ const observer = "IntersectionObserver" in window
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.08 })
+    }, { threshold: 0.1, rootMargin: "0px 0px -36px 0px" })
   : null;
 
 document.querySelectorAll(".reveal").forEach((node) => {

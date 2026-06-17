@@ -56,13 +56,23 @@
     }
 
     .reveal {
+      --reveal-delay: 0ms;
       opacity: 0;
-      transform: translateY(14px);
-      transition: opacity .6s ease, transform .6s ease;
+      transform: translate3d(0, 30px, 0);
+      filter: blur(5px);
+      transition:
+        opacity .78s cubic-bezier(.2,.7,.2,1) var(--reveal-delay),
+        transform .88s cubic-bezier(.2,.7,.2,1) var(--reveal-delay),
+        filter .72s ease var(--reveal-delay);
+      will-change: opacity, transform, filter;
     }
+    .reveal.reveal-scale { transform: translate3d(0, 22px, 0) scale(.975); }
+    .reveal.reveal-left { transform: translate3d(-28px, 0, 0); }
     .reveal.is-visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: translate3d(0, 0, 0) scale(1);
+      filter: blur(0);
+      will-change: auto;
     }
 
     .container {
@@ -144,6 +154,22 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      white-space: nowrap;
+    }
+    .version-badge {
+      flex: 0 0 auto;
+      min-height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(23, 20, 17, .14);
+      border-radius: 999px;
+      padding: 4px 9px;
+      color: rgba(23, 20, 17, .58);
+      background: rgba(251, 248, 242, .72);
+      font-size: 11px;
+      font-weight: 650;
+      line-height: 1;
       white-space: nowrap;
     }
     .mobile-top-call {
@@ -627,6 +653,13 @@
       border: 1px solid rgba(243, 239, 232, .18);
       font-size: 12px;
       font-weight: 520;
+      text-decoration: none;
+      transition: color .2s ease, border-color .2s ease, background .2s ease;
+    }
+    a.tag:hover {
+      color: #fffaf2;
+      border-color: rgba(176, 138, 82, .68);
+      background: rgba(176, 138, 82, .16);
     }
     .service-link,
     .case-link,
@@ -1353,6 +1386,11 @@
         display: none;
       }
       .phone, .nav-actions .btn { display: none; }
+      .version-badge {
+        margin-left: auto;
+        padding-inline: 8px;
+        font-size: 10px;
+      }
       .hero { min-height: auto; }
       .hero-content { padding: 72px 0 32px; }
       h1 {
@@ -1652,7 +1690,7 @@
         scroll-behavior: auto !important;
         transition-duration: .001ms !important;
       }
-      .reveal { opacity: 1; transform: none; }
+      .reveal { opacity: 1; transform: none; filter: none; }
     }
 
     @media (max-width: 760px) {
@@ -2098,6 +2136,7 @@
         <a class="phone" href="tel:+79967130405">+7 (996) 713-04-05</a>
         <a class="btn btn-dark" href="#contacts">Получить расчет</a>
       </div>
+      <span class="version-badge" aria-label="Текущая версия сайта">версия 1</span>
       <button class="nav-toggle mobile-menu-button" type="button" aria-label="Открыть меню" aria-expanded="false">Меню</button>
     </div>
   </header>
@@ -2110,23 +2149,22 @@
         <p class="eyebrow">SVETOART</p>
         <h1><span class="title-desktop">Декоративное Световое Оформление</span><span class="title-mobile">Декоративное<br>Световое<br>Оформление</span></h1>
         <p class="lead"><span class="lead-desktop">Компания SvetoART оказывает разнообразные услуги по декоративному световому оформлению - от консультации и визуализации до оформления объекта под ключ. Мы предоставляем услуги по световому оформлению фасадов зданий и входных групп, предлагаем праздничный световой декор для интерьеров ресторанов, витрин магазинов и торговых залов, предоставляем в аренду гирлянды для мероприятий и съемок, осуществляем уличное оформление: деревьев, елей, малых архитектурных форм и др.</span><span class="lead-mobile">Оформляем фасады, рестораны, дома и мероприятия световым декором. Пришлите фото - подберем формат и подготовим расчет.</span></p>
-        <div class="hero-buttons">
-          <a class="btn btn-primary" href="#contacts">Получить расчет по фото</a>
-          <a class="btn btn-ghost" href="./portfolio/uslugi-svetoart/"><span class="desktop-label">Смотреть примеры работ</span><span class="mobile-label">Смотреть работы ↓</span></a>
-        </div>
         <div class="hero-panel" aria-label="Как начинается проект">
-          <div><b>01 консультация</b><span>свяжемся после заявки на почту или в мессенджер</span></div>
-          <div><b>02 визуализация</b><span>дизайнер по вашим фото предложит варианты оформления</span></div>
-          <div><b>03 замеры</b><span>специалист уточнит материал, монтаж и смету на объекте</span></div>
+          <div><b>01 Консультация</b><span>обсуждаем задачу, объект и желаемый формат оформления</span></div>
+          <div><b>02 Визуализация</b><span>показываем, как свет будет смотреться на объекте</span></div>
+          <div><b>03 Замеры</b><span>уточняем размеры, точки крепления и условия монтажа</span></div>
+          <div><b>04 Смета</b><span>подбираем оборудование и рассчитываем стоимость работ</span></div>
+          <div><b>05 Монтаж</b><span>аккуратно устанавливаем световое оформление на объекте</span></div>
+          <div><b>06 Демонтаж</b><span>снимаем оборудование после события или сезона</span></div>
         </div>
       </div>
       <div class="hero-strip">
         <div class="container stats">
-          <div class="stat"><strong>Опытная команда</strong><span>иллюминация и подсветка</span></div>
-          <div class="stat"><strong>мы делаем жизнь ярче!</strong><span>слоган компании SvetoART</span></div>
-          <div class="stat"><strong>аренда + продажа</strong><span>оборудование на заказ</span></div>
-          <div class="stat"><strong>Москва и МО</strong><span>консультация, визуализация, выезд</span></div>
-          <div class="stat mobile-stat-only"><strong>Под ключ</strong><span>от идеи до монтажа</span></div>
+          <div class="stat"><strong>Опытная команда</strong><span>Консультация, визуализация, выезд</span></div>
+          <div class="stat"><strong>Мы делаем жизнь ярче!</strong><span>Наше кредо</span></div>
+          <div class="stat"><strong>Аренда или оформление</strong><span>Готовое оборудование или производство</span></div>
+          <div class="stat"><strong>Мск и МО</strong><span>Иллюминация и подсветка</span></div>
+          <div class="stat mobile-stat-only"><strong>Под ключ</strong><span>От идеи до монтажа</span></div>
         </div>
       </div>
     </section>
@@ -2186,9 +2224,10 @@
               <p>Световое декоративное оформление фасадов зданий и входных групп. Контурная подсветка, уличное оформление.</p>
               <ul class="service-meta">
                 <li>контурная подсветка</li>
+                <li>оформление фасадов</li>
                 <li>входные группы</li>
               </ul>
-              <div class="tag-row"><span class="tag">фасады</span><span class="tag">витрины</span><span class="tag">ТРК и БЦ</span></div>
+              <div class="tag-row"><a class="tag" href="./konturnoe-osveschenie/">Фасады</a><a class="tag" href="./prazdnichnoe-oformlenie-torgovih-zalov/">Витрины</a><a class="tag" href="./konturnoe-osveschenie/">Входные группы</a></div>
               <a class="service-link" href="./konturnoe-osveschenie/">Подробнее о контурном освещении</a>
             </div>
           </article>
@@ -2196,12 +2235,13 @@
             <img src="./assets/images/project-evening.jpg" alt="Новогоднее оформление елки" loading="lazy">
             <div class="service-content">
               <h3>Новогоднее оформление</h3>
-              <p>Новогоднее световое оформление зданий и улиц, ресторанов, торговых залов, офисов, загородных домов. Ели, гирлянды, световые конструкции.</p>
+              <p>Новогоднее световое оформление загородных домов, уличное декоративное освещение. Оформление гирляндами деревьев, елей и кустарников.</p>
               <ul class="service-meta">
-                <li>здания и улицы</li>
-                <li>ели и конструкции</li>
+                <li>загородные дома</li>
+                <li>деревья и ели</li>
+                <li>парки и улицы</li>
               </ul>
-              <div class="tag-row"><span class="tag">елки</span><span class="tag">дома</span><span class="tag">офисы</span></div>
+              <div class="tag-row"><a class="tag" href="./novyj-god-dekorativnoe-svetovoe-oformlenie-doma/">Загородные дома</a><a class="tag" href="./novogodnie-motivy/">Деревья и ели</a><a class="tag" href="./novogodnie-motivy/">Парки и улицы</a></div>
               <a class="service-link" href="./novogodnie-motivy/">Новогодние мотивы</a>
             </div>
           </article>
@@ -2211,10 +2251,11 @@
               <h3>Мероприятия и шатры</h3>
               <p>Оформление мероприятий - свадеб, корпоративов, съемок и конференций. Световое оформление шатров и свадебных площадок.</p>
               <ul class="service-meta">
-                <li>свадьбы и корпоративы</li>
+                <li>свадьбы</li>
+                <li>выпускные</li>
                 <li>шатры и площадки</li>
               </ul>
-              <div class="tag-row"><span class="tag">свадьбы</span><span class="tag">корпоративы</span><span class="tag">фотозоны</span></div>
+              <div class="tag-row"><a class="tag" href="./svetovoe-oformlenie-dlya-svadby/">Свадьбы</a><a class="tag" href="./oformlenie-meropriyatij/">Выпускные</a><a class="tag" href="./svetovoe-oformlenie-shatrov/">Шатры и площадки</a></div>
               <a class="service-link" href="./oformlenie-meropriyatij/">Оформление мероприятий</a>
             </div>
           </article>
@@ -2227,7 +2268,7 @@
                 <li>ретро-гирлянды</li>
                 <li>фото- и видеосъемки</li>
               </ul>
-              <div class="tag-row"><span class="tag">на сутки</span><span class="tag">с монтажом</span><span class="tag">с залогом</span></div>
+              <div class="tag-row"><a class="tag" href="./arenda/">Гирлянды для вечеринок</a><a class="tag" href="./novogodnyaya-fotozona-v-arendu/">Фотозоны</a><a class="tag" href="./arenda/">Фото и киносъёмки</a></div>
               <a class="service-link" href="./arenda/">Посмотреть аренду</a>
             </div>
           </article>
@@ -2235,25 +2276,27 @@
             <img src="./assets/images/project-evening.jpg" alt="Световое оборудование и конструкции" loading="lazy">
             <div class="service-content">
               <h3>Продажа и производство</h3>
-              <p>Продажа и производство на заказ: светодиодные мотивы и консоли, световые конструкции, декоративная хвойная гирлянда, светодиодная бахрома, ретро-гирлянды.</p>
+              <p>Продажа гирлянд: бахрома, занавесы, хвойные гирлянды, светодиодные нити и ретро-гирлянды. Производство на заказ: светодиодные праздничные конструкции, консоли и мотивы, световые фигуры оленей и персонажей.</p>
               <ul class="service-meta">
-                <li>производство на заказ</li>
-                <li>светодиодные изделия</li>
+                <li>гирлянды</li>
+                <li>фигуры</li>
+                <li>мотивы</li>
               </ul>
-              <div class="tag-row"><span class="tag">продажа</span><span class="tag">на заказ</span><span class="tag">ассортимент</span></div>
+              <div class="tag-row"><a class="tag" href="./assortiment/">Гирлянды</a><a class="tag" href="./svetovie-konstrukcii/">Фигуры</a><a class="tag" href="./svetodiodnue-motuvu/">Мотивы</a></div>
               <a class="service-link" href="./assortiment/">Перейти в ассортимент</a>
             </div>
           </article>
           <article class="service-card">
             <img src="./assets/images/hall-light.jpg" alt="Световое оформление ресторана" loading="lazy">
             <div class="service-content">
-              <h3>Рестораны и общественные пространства</h3>
-              <p>Световое оформление ресторанов, витрин магазинов, торговых залов. Праздничный световой декор для интерьеров HoReCa.</p>
+              <h3>Рестораны, клубы, магазины и общественные пространства</h3>
+              <p>Световое оформление ресторанов, витрин магазинов, торговых залов. Праздничный световой декор для общественных интерьеров.</p>
               <ul class="service-meta">
-                <li>рестораны и витрины</li>
-                <li>торговые залы</li>
+                <li>рестораны</li>
+                <li>торговые залы и витрины</li>
+                <li>офисы</li>
               </ul>
-              <div class="tag-row"><span class="tag">HoReCa</span><span class="tag">террасы</span><span class="tag">галереи</span></div>
+              <div class="tag-row"><a class="tag" href="./svetovoe-oformlenie-restorana/">Рестораны</a><a class="tag" href="./prazdnichnoe-oformlenie-torgovih-zalov/">Торговые залы и витрины</a><a class="tag" href="./oformlenie-ofisa-k-novomu-godu-svetovoj-dekor/">Офисы</a></div>
               <a class="service-link" href="./svetovoe-oformlenie-restorana/">Оформление ресторанов</a>
             </div>
           </article>
@@ -2299,7 +2342,7 @@
             <small>Ресторан</small>
             <div>
               <h3>Световое оформление ресторанов</h3>
-              <p>Фасады, входные группы, витрины, торговые залы и праздничный световой декор для интерьеров HoReCa.</p>
+              <p>Фасады, входные группы, витрины, торговые залы и праздничный световой декор для общественных интерьеров.</p>
               <a class="case-link" href="./svetovoe-oformlenie-restorana/">Подробнее</a>
             </div>
           </article>
@@ -2864,8 +2907,34 @@
       actionbarObserver.observe(contactsSection);
     }
 
-    document.querySelectorAll("section, .service-card, .proof, .case, .step, .price, .review, .partner").forEach((node) => {
-      node.classList.add("reveal");
+    const revealGroups = [
+      ".hero-content > *",
+      ".stats > *",
+      ".section-head > *",
+      ".service-grid > *",
+      ".proof-grid > *",
+      ".case-grid > *",
+      ".process > *",
+      ".case-detail-grid > *",
+      ".package-grid > *",
+      ".price-band > *",
+      ".portfolio > *",
+      ".reviews-grid > *",
+      ".guarantee-grid > *",
+      ".faq-grid > *",
+      ".contact-panel > *",
+      ".footer-grid > *",
+      ".mobile-showcase-grid > *"
+    ];
+
+    revealGroups.forEach((selector) => {
+      document.querySelectorAll(selector).forEach((node, index) => {
+        node.classList.add("reveal");
+        node.style.setProperty("--reveal-delay", `${Math.min(index % 6, 5) * 75}ms`);
+        if (node.matches(".service-card, .proof, .case, .price, .review, .partner, figure, .package, .guarantee")) {
+          node.classList.add("reveal-scale");
+        }
+      });
     });
 
     const observer = new IntersectionObserver((entries) => {
@@ -2875,7 +2944,7 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    }, { threshold: 0.1, rootMargin: "0px 0px -36px 0px" });
 
     document.querySelectorAll(".reveal").forEach((node) => observer.observe(node));
 
