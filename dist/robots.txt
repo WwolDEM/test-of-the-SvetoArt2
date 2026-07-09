@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://wwoldem.github.io/test-of-the-SvetoArt2/sitemap.xml
