@@ -10,12 +10,37 @@ if (matchMedia("(hover: hover) and (pointer: fine)").matches && !matchMedia("(pr
   document.body.append(ring, dot);
   document.body.classList.add("cursor-ready");
 
+  let targetX = -80;
+  let targetY = -80;
+  let ringX = targetX;
+  let ringY = targetY;
+  let rafId = null;
+
+  const renderRing = () => {
+    ringX += (targetX - ringX) * 0.16;
+    ringY += (targetY - ringY) * 0.16;
+    if (Math.abs(targetX - ringX) < 0.1 && Math.abs(targetY - ringY) < 0.1) {
+      ringX = targetX;
+      ringY = targetY;
+      rafId = null;
+    } else {
+      rafId = requestAnimationFrame(renderRing);
+    }
+    ring.style.setProperty("--cursor-x", `${ringX}px`);
+    ring.style.setProperty("--cursor-y", `${ringY}px`);
+  };
+
   document.addEventListener("pointermove", (event) => {
     if (event.pointerType && event.pointerType !== "mouse") return;
-    ring.style.setProperty("--cursor-x", `${event.clientX}px`);
-    ring.style.setProperty("--cursor-y", `${event.clientY}px`);
-    dot.style.setProperty("--cursor-x", `${event.clientX}px`);
-    dot.style.setProperty("--cursor-y", `${event.clientY}px`);
+    targetX = event.clientX;
+    targetY = event.clientY;
+    if (!document.body.classList.contains("cursor-visible")) {
+      ringX = targetX;
+      ringY = targetY;
+    }
+    dot.style.setProperty("--cursor-x", `${targetX}px`);
+    dot.style.setProperty("--cursor-y", `${targetY}px`);
+    if (rafId === null) rafId = requestAnimationFrame(renderRing);
     document.body.classList.add("cursor-visible");
     const target = event.target instanceof Element ? event.target : null;
     document.body.classList.toggle("cursor-link", Boolean(target?.closest("a, button, [role='button']")));

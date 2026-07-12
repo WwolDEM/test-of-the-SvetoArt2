@@ -80,3 +80,24 @@ document.querySelectorAll(".footer-toggle").forEach((button) => {
     button.setAttribute("aria-expanded", String(open));
   });
 });
+
+document.querySelectorAll(".nav-item.has-panel").forEach((item) => {
+  const link = item.querySelector("a");
+  const toggle = item.querySelector(".sub-toggle");
+  const setExpanded = (open) => {
+    item.classList.toggle("open", open);
+    link?.setAttribute("aria-expanded", String(open));
+    toggle?.setAttribute("aria-expanded", String(open));
+  };
+  toggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setExpanded(!item.classList.contains("open"));
+  });
+  item.addEventListener("mouseenter", () => setExpanded(true));
+  item.addEventListener("mouseleave", () => setExpanded(false));
+  item.addEventListener("focusin", () => setExpanded(true));
+  item.addEventListener("focusout", (event) => {
+    if (!item.contains(event.relatedTarget)) setExpanded(false);
+  });
+});
