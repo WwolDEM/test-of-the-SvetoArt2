@@ -233,6 +233,9 @@ p { margin: 0; }
 .contact-list { display: grid; gap: 14px; margin-top: 30px; }
 .contact-list a, .contact-list span { display: block; border-bottom: 1px solid rgba(255,255,255,.15); padding-bottom: 14px; color: rgba(255,255,255,.78); }
 .contact-list--light a, .contact-list--light span { color: var(--ink); border-color: var(--line); }
+.contact-list a { transition: color .18s ease, border-color .18s ease, padding-left .18s ease; }
+.contact-list a:hover, .contact-list a:focus-visible { color: #fff; border-color: rgba(176, 138, 82, .75); padding-left: 6px; }
+.contact-list--light a:hover, .contact-list--light a:focus-visible { color: var(--accent-dark); border-color: var(--accent); }
 .form-card { padding: 32px; color: var(--ink); }
 .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .field { display: grid; gap: 7px; margin-bottom: 14px; }
