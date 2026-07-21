@@ -468,6 +468,26 @@
       overflow-wrap: anywhere;
     }
 
+    .partners-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 8px;
+    }
+    .partner-plh {
+      flex: 1 1 150px;
+      min-width: 140px;
+      height: 84px;
+      display: grid;
+      place-items: center;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: .04em;
+      background: var(--surface);
+    }
+
     .garland-divider {
       padding: 18px 0 6px;
       color: rgba(23, 20, 17, .22);
@@ -2157,11 +2177,11 @@
   </script>
   <header class="topbar">
     <div class="container nav">
-      <a class="brand" href="./" aria-label="SvetoART - главная">
+      <a class="brand" href="./" aria-label="SvetoART - главная" target="_blank" rel="noopener">
         <img class="brand-logo" src="./assets/images/logo.png" alt="SvetoART">
       </a>
       <a class="mobile-top-call" href="tel:+79967130405" aria-label="Позвонить в SvetoART">Звонок</a>
-      <nav class="menu" aria-label="Главное меню"><div class="nav-item nav-item-home"><a href="./">Главная</a></div><div class="nav-item has-panel"><a href="./uslugi/" aria-haspopup="true" aria-expanded="false">Услуги</a><button class="sub-toggle" type="button" aria-expanded="false" aria-label="Подразделы: Услуги"></button><div class="nav-panel"><a href="./uslugi/">Световое декоративное оформление</a><a href="./oformlenie-meropriyatij/">Световое и декоративное оформление мероприятий</a><a href="./arenda/">Аренда светового и декоративного оборудования</a></div></div><div class="nav-item has-panel"><a href="./novogodnie-motivy/" aria-haspopup="true" aria-expanded="false">Оформление</a><button class="sub-toggle" type="button" aria-expanded="false" aria-label="Подразделы: Оформление"></button><div class="nav-panel"><a href="./novyj-god-dekorativnoe-svetovoe-oformlenie-doma/">Новогоднее оформление фасадов</a><a href="./konturnoe-osveschenie/">Декоративное оформление входных групп</a><a href="./svetovoe-oformlenie-doma/">Уличное световое оформление</a><a href="./oformlenie-meropriyatij/">Оформление мероприятий</a></div></div><div class="nav-item has-panel"><a href="./arenda/" aria-haspopup="true" aria-expanded="false">Аренда</a><button class="sub-toggle" type="button" aria-expanded="false" aria-label="Подразделы: Аренда"></button><div class="nav-panel"><a href="./assortiment/">Ассортимент</a></div></div><div class="nav-item"><a href="./portfolio/uslugi-svetoart/">Портфолио</a></div><div class="nav-item has-panel"><a href="./about/" aria-haspopup="true" aria-expanded="false">О компании</a><button class="sub-toggle" type="button" aria-expanded="false" aria-label="Подразделы: О компании"></button><div class="nav-panel"><a href="./about/#o-nas">О нас</a><a href="./kak-my-rabotaem/">Как мы работаем</a><a href="./dostavka-i-oplata/">Доставка и оплата</a></div></div><div class="nav-item"><a href="./kontakty/">Контакты</a></div><a class="menu-contact" href="tel:+79967130405">+7 (996) 713-04-05</a><a class="menu-contact" href="https://t.me/svetoART" target="_blank" rel="noopener noreferrer">Telegram: t.me/svetoART</a></nav>
+      <nav class="menu" aria-label="Главное меню"><div class="nav-item nav-item-home"><a href="./" target="_blank" rel="noopener">Главная</a></div><div class="nav-item has-panel"><a href="./uslugi/" aria-haspopup="true" aria-expanded="false" target="_blank" rel="noopener">Услуги</a><button class="sub-toggle" type="button" aria-expanded="false" aria-label="Подразделы: Услуги"></button><div class="nav-panel"><a href="./uslugi/" target="_blank" rel="noopener">Световое декоративное оформление</a><a href="./oformlenie-meropriyatij/" target="_blank" rel="noopener">Световое и декоративное оформление мероприятий</a><a href="./arenda/" target="_blank" rel="noopener">Аренда светового и декоративного оборудования</a></div></div><div class="nav-item has-panel"><a href="./novogodnie-motivy/" aria-haspopup="true" aria-expanded="false" target="_blank" rel="noopener">Оформление</a><button class="sub-toggle" type="button" aria-expanded="false" aria-label="Подразделы: Оформление"></button><div class="nav-panel"><a href="./novyj-god-dekorativnoe-svetovoe-oformlenie-doma/" target="_blank" rel="noopener">Новогоднее оформление фасадов</a><a href="./konturnoe-osveschenie/" target="_blank" rel="noopener">Декоративное оформление входных групп</a><a href="./svetovoe-oformlenie-doma/" target="_blank" rel="noopener">Уличное световое оформление</a><a href="./oformlenie-meropriyatij/" target="_blank" rel="noopener">Оформление мероприятий</a></div></div><div class="nav-item has-panel"><a href="./arenda/" aria-haspopup="true" aria-expanded="false" target="_blank" rel="noopener">Аренда</a><button class="sub-toggle" type="button" aria-expanded="false" aria-label="Подразделы: Аренда"></button><div class="nav-panel"><a href="./assortiment/" target="_blank" rel="noopener">Ассортимент</a></div></div><div class="nav-item"><a href="./portfolio/uslugi-svetoart/" target="_blank" rel="noopener">Портфолио</a></div><div class="nav-item has-panel"><a href="./about/" aria-haspopup="true" aria-expanded="false" target="_blank" rel="noopener">О компании</a><button class="sub-toggle" type="button" aria-expanded="false" aria-label="Подразделы: О компании"></button><div class="nav-panel"><a href="./about/" target="_blank" rel="noopener">О нас</a><a href="./kak-my-rabotaem/" target="_blank" rel="noopener">Как мы работаем</a><a href="./dostavka-i-oplata/" target="_blank" rel="noopener">Доставка и оплата</a></div></div><div class="nav-item"><a href="./kontakty/" target="_blank" rel="noopener">Контакты</a></div><a class="menu-contact" href="tel:+79967130405">+7 (996) 713-04-05</a><a class="menu-contact" href="https://t.me/svetoART" target="_blank" rel="noopener noreferrer">Telegram: t.me/svetoART</a></nav>
       <div class="nav-actions">
         <a class="phone" href="tel:+79967130405">+7 (996) 713-04-05</a>
         <a class="btn btn-dark" href="#contacts">Получить расчет</a>
@@ -2182,13 +2202,13 @@
         <p class="hero-steps">
           <span class="steps-full">Консультация <b>→</b> Визуализация <b>→</b> Замеры <b>→</b> Смета <b>→</b> Монтаж <b>→</b> Демонтаж</span>
           <span class="steps-short">Консультация <b>→</b> … <b>→</b> Монтаж под ключ</span>
-          <a class="hero-steps-link" href="./kak-my-rabotaem/">Как мы работаем →</a>
+          <a class="hero-steps-link" href="./kak-my-rabotaem/" target="_blank" rel="noopener">Как мы работаем →</a>
         </p>
       </div>
       <div class="hero-strip">
         <div class="container stats">
-          <div class="stat"><strong>Оформление под ключ</strong><span>Консультация, визуализация, монтаж</span></div>
-          <div class="stat"><strong>Фасады, мероприятия, новый год</strong><span>Оформление любых объектов</span></div>
+          <div class="stat"><strong>С 2007 года</strong><span>Более 19 лет на рынке</span></div>
+          <div class="stat"><strong>200+ объектов</strong><span>Реализовано под ключ</span></div>
           <div class="stat"><strong>Аренда и производство</strong><span>Декор и изготовление на заказ</span></div>
           <div class="stat"><strong>Москва и область</strong><span>Выезд специалиста на объект</span></div>
         </div>
@@ -2203,10 +2223,10 @@
     </div>
 
     <nav class="mobile-quick-links" aria-label="Быстрые разделы">
-      <a href="./uslugi/">Услуги</a>
-      <a href="./portfolio/uslugi-svetoart/">Работы</a>
-      <a href="./dostavka-i-oplata/">Доставка</a>
-      <a href="./kontakty/">Контакты</a>
+      <a href="./uslugi/" target="_blank" rel="noopener">Услуги</a>
+      <a href="./portfolio/uslugi-svetoart/" target="_blank" rel="noopener">Работы</a>
+      <a href="./dostavka-i-oplata/" target="_blank" rel="noopener">Доставка</a>
+      <a href="./kontakty/" target="_blank" rel="noopener">Контакты</a>
     </nav>
 
     <section id="mobile-works" class="mobile-showcase" aria-label="Лучшие работы">
@@ -2234,7 +2254,7 @@
         </div>
         <p class="swipe-hint">Листайте, чтобы посмотреть работы →</p>
         <div class="mini-cta">
-          <a class="btn btn-primary" href="./portfolio/uslugi-svetoart/">Все работы</a>
+          <a class="btn btn-primary" href="./portfolio/uslugi-svetoart/" target="_blank" rel="noopener">Все работы</a>
         </div>
       </div>
     </section>
@@ -2260,8 +2280,8 @@
                 <li>оформление фасадов</li>
                 <li>входные группы</li>
               </ul>
-              <div class="tag-row"><a class="tag" href="./konturnoe-osveschenie/">Фасады</a><a class="tag" href="./prazdnichnoe-oformlenie-torgovih-zalov/">Витрины</a><a class="tag" href="./konturnoe-osveschenie/">Входные группы</a></div>
-              <a class="service-link" href="./konturnoe-osveschenie/">Подробнее о контурном освещении</a>
+              <div class="tag-row"><a class="tag" href="./konturnoe-osveschenie/" target="_blank" rel="noopener">Фасады</a><a class="tag" href="./prazdnichnoe-oformlenie-torgovih-zalov/" target="_blank" rel="noopener">Витрины</a><a class="tag" href="./konturnoe-osveschenie/" target="_blank" rel="noopener">Входные группы</a></div>
+              <a class="service-link" href="./konturnoe-osveschenie/" target="_blank" rel="noopener">Подробнее о контурном освещении</a>
             </div>
           </article>
           <article class="service-card">
@@ -2274,8 +2294,8 @@
                 <li>деревья и ели</li>
                 <li>парки и улицы</li>
               </ul>
-              <div class="tag-row"><a class="tag" href="./novyj-god-dekorativnoe-svetovoe-oformlenie-doma/">Загородные дома</a><a class="tag" href="./novogodnie-motivy/">Деревья и ели</a><a class="tag" href="./novogodnie-motivy/">Парки и улицы</a></div>
-              <a class="service-link" href="./novogodnie-motivy/">Новогодние мотивы</a>
+              <div class="tag-row"><a class="tag" href="./novyj-god-dekorativnoe-svetovoe-oformlenie-doma/" target="_blank" rel="noopener">Загородные дома</a><a class="tag" href="./novogodnie-motivy/" target="_blank" rel="noopener">Деревья и ели</a><a class="tag" href="./novogodnie-motivy/" target="_blank" rel="noopener">Парки и улицы</a></div>
+              <a class="service-link" href="./novogodnie-motivy/" target="_blank" rel="noopener">Новогодние мотивы</a>
             </div>
           </article>
           <article class="service-card">
@@ -2288,8 +2308,8 @@
                 <li>выпускные</li>
                 <li>шатры и площадки</li>
               </ul>
-              <div class="tag-row"><a class="tag" href="./svetovoe-oformlenie-dlya-svadby/">Свадьбы</a><a class="tag" href="./oformlenie-meropriyatij/">Выпускные</a><a class="tag" href="./svetovoe-oformlenie-shatrov/">Шатры и площадки</a></div>
-              <a class="service-link" href="./oformlenie-meropriyatij/">Оформление мероприятий</a>
+              <div class="tag-row"><a class="tag" href="./svetovoe-oformlenie-dlya-svadby/" target="_blank" rel="noopener">Свадьбы</a><a class="tag" href="./oformlenie-meropriyatij/" target="_blank" rel="noopener">Выпускные</a><a class="tag" href="./svetovoe-oformlenie-shatrov/" target="_blank" rel="noopener">Шатры и площадки</a></div>
+              <a class="service-link" href="./oformlenie-meropriyatij/" target="_blank" rel="noopener">Оформление мероприятий</a>
             </div>
           </article>
           <article class="service-card">
@@ -2301,8 +2321,8 @@
                 <li>ретро-гирлянды</li>
                 <li>фото- и видеосъемки</li>
               </ul>
-              <div class="tag-row"><a class="tag" href="./arenda/">Гирлянды для вечеринок</a><a class="tag" href="./novogodnyaya-fotozona-v-arendu/">Фотозоны</a><a class="tag" href="./arenda/">Фото и киносъёмки</a></div>
-              <a class="service-link" href="./arenda/">Посмотреть аренду</a>
+              <div class="tag-row"><a class="tag" href="./arenda/" target="_blank" rel="noopener">Гирлянды для вечеринок</a><a class="tag" href="./novogodnyaya-fotozona-v-arendu/" target="_blank" rel="noopener">Фотозоны</a><a class="tag" href="./arenda/" target="_blank" rel="noopener">Фото и киносъёмки</a></div>
+              <a class="service-link" href="./arenda/" target="_blank" rel="noopener">Посмотреть аренду</a>
             </div>
           </article>
           <article class="service-card">
@@ -2315,8 +2335,8 @@
                 <li>фигуры</li>
                 <li>мотивы</li>
               </ul>
-              <div class="tag-row"><a class="tag" href="./assortiment/">Гирлянды</a><a class="tag" href="./svetovie-konstrukcii/">Фигуры</a><a class="tag" href="./svetodiodnue-motuvu/">Мотивы</a></div>
-              <a class="service-link" href="./assortiment/">Перейти в ассортимент</a>
+              <div class="tag-row"><a class="tag" href="./assortiment/" target="_blank" rel="noopener">Гирлянды</a><a class="tag" href="./svetovie-konstrukcii/" target="_blank" rel="noopener">Фигуры</a><a class="tag" href="./svetodiodnue-motuvu/" target="_blank" rel="noopener">Мотивы</a></div>
+              <a class="service-link" href="./assortiment/" target="_blank" rel="noopener">Перейти в ассортимент</a>
             </div>
           </article>
           <article class="service-card">
@@ -2329,13 +2349,13 @@
                 <li>торговые залы и витрины</li>
                 <li>офисы</li>
               </ul>
-              <div class="tag-row"><a class="tag" href="./svetovoe-oformlenie-restorana/">Рестораны</a><a class="tag" href="./prazdnichnoe-oformlenie-torgovih-zalov/">Торговые залы и витрины</a><a class="tag" href="./oformlenie-ofisa-k-novomu-godu-svetovoj-dekor/">Офисы</a></div>
-              <a class="service-link" href="./svetovoe-oformlenie-restorana/">Оформление ресторанов</a>
+              <div class="tag-row"><a class="tag" href="./svetovoe-oformlenie-restorana/" target="_blank" rel="noopener">Рестораны</a><a class="tag" href="./prazdnichnoe-oformlenie-torgovih-zalov/" target="_blank" rel="noopener">Торговые залы и витрины</a><a class="tag" href="./oformlenie-ofisa-k-novomu-godu-svetovoj-dekor/" target="_blank" rel="noopener">Офисы</a></div>
+              <a class="service-link" href="./svetovoe-oformlenie-restorana/" target="_blank" rel="noopener">Оформление ресторанов</a>
             </div>
           </article>
         </div>
         <div class="mini-cta">
-          <a class="btn btn-primary" href="./uslugi/">Все услуги →</a>
+          <a class="btn btn-primary" href="./uslugi/" target="_blank" rel="noopener">Все услуги →</a>
         </div>
       </div>
     </section>
@@ -2361,6 +2381,9 @@
       </div>
     </section>
 
+    <section class="mobile-skip"><div class="container"><div class="section-head"><div><p class="section-kicker">Партнёры</p><h2>Наши партнёры</h2></div><a class="section-link" href="./portfolio/uslugi-svetoart/" target="_blank" rel="noopener">Смотреть портфолио →</a></div><div class="partners-strip"><div class="partner-plh">логотип</div><div class="partner-plh">логотип</div><div class="partner-plh">логотип</div><div class="partner-plh">логотип</div><div class="partner-plh">логотип</div><div class="partner-plh">логотип</div></div></div></section>
+
+    
     <section id="portfolio">
       <div class="container">
         <div class="section-head">
@@ -2378,7 +2401,7 @@
         </div>
         <div class="mini-cta">
           <a class="btn btn-primary" href="#contacts">Связаться с нами</a>
-          <a class="section-link" href="./portfolio/uslugi-svetoart/">Все услуги и примеры работ</a>
+          <a class="section-link" href="./portfolio/uslugi-svetoart/" target="_blank" rel="noopener">Все услуги и примеры работ</a>
         </div>
       </div>
     </section>
@@ -2409,7 +2432,7 @@
             <strong>Клиент SvetoART</strong><span>Аренда светового декора</span>
           </article>
         </div>
-        <a class="section-link" href="./otzyvy/">Читать отзывы клиентов</a>
+        <a class="section-link" href="./otzyvy/" target="_blank" rel="noopener">Читать отзывы клиентов</a>
       </div>
     </section>
 
@@ -2426,7 +2449,7 @@
               <li><a href="mailto:info@svetoart.ru">info@svetoart.ru</a></li>
               <li><a href="https://vk.com/infosvetoart" target="_blank" rel="noopener noreferrer">ВКонтакте: vk.com/infosvetoart</a></li>
               <li><a href="https://t.me/svetoART" target="_blank" rel="noopener noreferrer">Telegram: t.me/svetoART</a></li>
-              <li><a href="./kontakty/">Адрес, реквизиты и режим работы</a></li>
+              <li><a href="./kontakty/" target="_blank" rel="noopener">Адрес, реквизиты и режим работы</a></li>
               <li><span>Москва и Московская область</span></li>
               <li><span>Консультация, визуализация, оформление под ключ</span></li>
             </ul>
@@ -2462,7 +2485,7 @@
             <p class="form-note">Вы можете оставить сообщение в Telegram: <a href="https://t.me/svetoART" target="_blank" rel="noopener noreferrer">t.me/svetoART</a>. Мы свяжемся с вами в ближайшее время.</p>
             <label class="privacy">
               <input type="checkbox" name="privacy" required>
-              <span>Согласен(-а) на <a href="./privacy/">обработку персональных данных</a> и обратную связь по заявке.</span>
+              <span>Согласен(-а) на <a href="./privacy/" target="_blank" rel="noopener">обработку персональных данных</a> и обратную связь по заявке.</span>
             </label>
             <button class="btn btn-primary" type="submit">Отправить заявку</button>
           </form>
@@ -2479,40 +2502,40 @@
             </div>
             <nav class="footer-nav" aria-label="Компания">
               <button class="footer-toggle" type="button" aria-expanded="false">Компания</button>
-              <a href="./">Главная</a>
-              <a href="./about/">О компании</a>
-              <a href="./portfolio/uslugi-svetoart/">Услуги и портфолио</a>
-              <a href="./dostavka-i-oplata/">Доставка и оплата</a>
-              <a href="./kontakty/">Контакты</a>
-              <a href="./privacy/">Политика конфиденциальности</a>
+              <a href="./" target="_blank" rel="noopener">Главная</a>
+              <a href="./about/" target="_blank" rel="noopener">О компании</a>
+              <a href="./portfolio/uslugi-svetoart/" target="_blank" rel="noopener">Услуги и портфолио</a>
+              <a href="./dostavka-i-oplata/" target="_blank" rel="noopener">Доставка и оплата</a>
+              <a href="./kontakty/" target="_blank" rel="noopener">Контакты</a>
+              <a href="./privacy/" target="_blank" rel="noopener">Политика конфиденциальности</a>
             </nav>
             <nav class="footer-nav" aria-label="Световое оформление">
               <button class="footer-toggle" type="button" aria-expanded="false">Оформление</button>
-              <a href="./novogodnie-motivy/">Новогодние мотивы</a>
-              <a href="./oformlenie-meropriyatij/">Оформление мероприятий</a>
-              <a href="./svetovoe-oformlenie-shatrov/">Оформление шатров</a>
-              <a href="./svetovoe-oformlenie-dlya-svadby/">Оформление свадьбы</a>
-              <a href="./prazdnichnoe-oformlenie-torgovih-zalov/">Оформление торговых залов</a>
-              <a href="./svetovoe-oformlenie-restorana/">Оформление ресторанов</a>
-              <a href="./svetovoe-oformlenie-doma/">Оформление дома</a>
-              <a href="./konturnoe-osveschenie/">Контурное освещение</a>
+              <a href="./novogodnie-motivy/" target="_blank" rel="noopener">Новогодние мотивы</a>
+              <a href="./oformlenie-meropriyatij/" target="_blank" rel="noopener">Оформление мероприятий</a>
+              <a href="./svetovoe-oformlenie-shatrov/" target="_blank" rel="noopener">Оформление шатров</a>
+              <a href="./svetovoe-oformlenie-dlya-svadby/" target="_blank" rel="noopener">Оформление свадьбы</a>
+              <a href="./prazdnichnoe-oformlenie-torgovih-zalov/" target="_blank" rel="noopener">Оформление торговых залов</a>
+              <a href="./svetovoe-oformlenie-restorana/" target="_blank" rel="noopener">Оформление ресторанов</a>
+              <a href="./svetovoe-oformlenie-doma/" target="_blank" rel="noopener">Оформление дома</a>
+              <a href="./konturnoe-osveschenie/" target="_blank" rel="noopener">Контурное освещение</a>
             </nav>
             <nav class="footer-nav" aria-label="Аренда и ассортимент">
               <button class="footer-toggle" type="button" aria-expanded="false">Аренда и ассортимент</button>
-              <a href="./arenda/">Аренда светового декора</a>
-              <a href="./girlyandy-dlya-svadby/">Гирлянды для свадьбы</a>
-              <a href="./assortiment/">Ассортимент</a>
-              <a href="./retro-girlyanda/">Ретро-гирлянды</a>
-              <a href="./svetodiodnue-motuvu/">Светодиодные мотивы</a>
-              <a href="./svetovie-konstrukcii/">Световые конструкции</a>
-              <a href="./decor-xvoyya/">Декоративная хвоя</a>
-              <a href="./arenda-svetodiodnyx-izdelijbaxroma/">Светодиодные изделия и бахрома</a>
-              <a href="./arenda/svetovogo-oborudovania/">Аренда светового оборудования</a>
+              <a href="./arenda/" target="_blank" rel="noopener">Аренда светового декора</a>
+              <a href="./girlyandy-dlya-svadby/" target="_blank" rel="noopener">Гирлянды для свадьбы</a>
+              <a href="./assortiment/" target="_blank" rel="noopener">Ассортимент</a>
+              <a href="./retro-girlyanda/" target="_blank" rel="noopener">Ретро-гирлянды</a>
+              <a href="./svetodiodnue-motuvu/" target="_blank" rel="noopener">Светодиодные мотивы</a>
+              <a href="./svetovie-konstrukcii/" target="_blank" rel="noopener">Световые конструкции</a>
+              <a href="./decor-xvoyya/" target="_blank" rel="noopener">Декоративная хвоя</a>
+              <a href="./arenda-svetodiodnyx-izdelijbaxroma/" target="_blank" rel="noopener">Светодиодные изделия и бахрома</a>
+              <a href="./arenda/svetovogo-oborudovania/" target="_blank" rel="noopener">Аренда светового оборудования</a>
             </nav>
             <nav class="footer-nav" aria-label="Полезные материалы">
               <button class="footer-toggle" type="button" aria-expanded="false">Полезное</button>
-              <a href="./novyj-god-dekorativnoe-svetovoe-oformlenie-doma/">Новогоднее оформление дома</a>
-              <a href="./oformlenie-ofisa-k-novomu-godu-svetovoj-dekor/">Новогоднее оформление офиса</a>
+              <a href="./novyj-god-dekorativnoe-svetovoe-oformlenie-doma/" target="_blank" rel="noopener">Новогоднее оформление дома</a>
+              <a href="./oformlenie-ofisa-k-novomu-godu-svetovoj-dekor/" target="_blank" rel="noopener">Новогоднее оформление офиса</a>
             </nav>
           </div>
           <div class="footer-bottom">
