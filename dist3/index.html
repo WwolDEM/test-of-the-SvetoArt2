@@ -1,0 +1,792 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SvetoART - декоративное световое оформление в Москве и МО</title>
+  <meta name="description" content="SvetoART: декоративное световое оформление фасадов, домов, ресторанов, мероприятий и новогодних пространств под ключ в Москве и Московской области.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://wwoldem.github.io/test-of-the-SvetoArt2/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://wwoldem.github.io/test-of-the-SvetoArt2/">
+  <meta property="og:title" content="SvetoART - декоративное световое оформление в Москве и МО">
+  <meta property="og:description" content="Декоративное световое оформление фасадов, домов, ресторанов, мероприятий и новогодних пространств под ключ в Москве и Московской области.">
+  <meta property="og:site_name" content="SvetoART">
+  <meta property="og:image" content="https://wwoldem.github.io/test-of-the-SvetoArt2/assets/images/bank-svet.jpg">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1280">
+  <meta property="og:image:alt" content="Декоративное световое оформление фасада от SvetoART">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SvetoART - декоративное световое оформление в Москве и МО">
+  <meta name="twitter:description" content="Световое оформление фасадов, домов, ресторанов и мероприятий под ключ в Москве и МО.">
+  <meta name="twitter:image" content="https://wwoldem.github.io/test-of-the-SvetoArt2/assets/images/bank-svet.jpg">
+  <link rel="icon" href="./assets/images/favicon.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="./assets/images/apple-touch-icon.png">
+  <link rel="preload" as="image" href="./assets/images/bank-svet.jpg" fetchpriority="high">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap&subset=cyrillic">
+  <link rel="stylesheet" href="./assets/css/cursor.css">
+  <style>
+    :root {
+      --bg: #0d0b09;
+      --bg-2: #14110d;
+      --surface: #1a1612;
+      --surface-2: #221c16;
+      --line: rgba(243, 232, 214, .12);
+      --line-strong: rgba(243, 232, 214, .22);
+      --text: #f3ece0;
+      --muted: rgba(243, 236, 224, .62);
+      --gold: #b08a52;
+      --gold-light: #e2c48e;
+      --glow: rgba(226, 196, 142, .32);
+      --radius: 6px;
+      --max: 1240px;
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "Manrope", "Helvetica Neue", Arial, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { margin: 0; font-weight: 500; }
+    p { margin: 0; }
+    .container { width: calc(100% - 48px); max-width: var(--max); margin: 0 auto; }
+
+    /* ---------- reveal ---------- */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s cubic-bezier(.2,.7,.2,1) var(--d, 0ms), transform .9s cubic-bezier(.2,.7,.2,1) var(--d, 0ms); }
+    .reveal.is-visible { opacity: 1; transform: none; }
+
+    /* ---------- preloader ---------- */
+    .preloader {
+      position: fixed; inset: 0; z-index: 9000;
+      display: grid; place-items: center;
+      background: var(--bg);
+      transition: opacity .6s ease, visibility 0s linear .6s;
+    }
+    .preloader.is-done { opacity: 0; visibility: hidden; }
+    .preloader__inner { display: grid; justify-items: center; gap: 22px; }
+    .preloader__logo { width: 170px; opacity: 0; animation: preFade 1s ease .25s forwards; filter: drop-shadow(0 0 18px var(--glow)); }
+    .preloader__line { width: 220px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold-light), transparent); transform: scaleX(0); animation: preLine 1.3s cubic-bezier(.7,0,.2,1) forwards; }
+    @keyframes preFade { to { opacity: 1; } }
+    @keyframes preLine { to { transform: scaleX(1); } }
+
+    /* ---------- header ---------- */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      transition: background .35s ease, border-color .35s ease;
+      border-bottom: 1px solid transparent;
+    }
+    .topbar.is-scrolled {
+      background: rgba(13, 11, 9, .82);
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px);
+      border-color: var(--line);
+    }
+    .nav { display: flex; align-items: center; gap: 28px; min-height: 84px; }
+    .brand img { height: 44px; width: auto; }
+    .menu { display: flex; align-items: center; gap: 4px; margin-left: auto; font-size: 14px; font-weight: 500; }
+    .nav-item { position: relative; display: inline-flex; align-items: center; }
+    .nav-item > a { display: inline-flex; align-items: center; padding: 10px 12px; color: rgba(243,236,224,.82); white-space: nowrap; transition: color .2s ease; }
+    .nav-item > a:hover { color: var(--gold-light); }
+    .nav-item-home { display: none; }
+    .sub-toggle { width: 16px; height: 16px; margin-left: -6px; padding: 0; border: 0; background: none; color: var(--muted); pointer-events: none; }
+    .sub-toggle::before { content: ""; display: block; width: 5px; height: 5px; margin: 0 auto; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg); }
+    .nav-panel {
+      position: absolute; top: 100%; left: 50%;
+      min-width: 260px; max-width: 340px; width: max-content;
+      padding: 10px;
+      background: rgba(26, 22, 18, .96);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      box-shadow: 0 24px 60px rgba(0,0,0,.5), 0 0 0 1px rgba(176,138,82,.08);
+      opacity: 0; visibility: hidden;
+      transform: translate(-50%, 8px);
+      transition: opacity .22s ease .12s, transform .22s ease .12s, visibility 0s linear .34s;
+    }
+    .nav-panel::before { content: ""; position: absolute; left: 0; right: 0; top: -16px; height: 16px; }
+    .nav-item:hover > .nav-panel, .nav-item:focus-within > .nav-panel { opacity: 1; visibility: visible; transform: translate(-50%, 0); transition-delay: 0s; }
+    .nav-panel a { display: block; padding: 11px 14px; border-radius: 4px; font-size: 14px; line-height: 1.35; color: rgba(243,236,224,.82); transition: color .15s ease, background .15s ease; }
+    .nav-panel a:hover { color: var(--gold-light); background: rgba(176,138,82,.1); }
+    .menu-contact { display: none; }
+    .nav-actions { display: flex; align-items: center; gap: 18px; }
+    .phone { font-size: 14px; font-weight: 600; color: var(--text); white-space: nowrap; }
+    .version-badge {
+      position: fixed; top: 10px; right: 10px; z-index: 120;
+      padding: 3px 9px; border-radius: 99px;
+      background: rgba(176,138,82,.16); border: 1px solid rgba(176,138,82,.4);
+      color: var(--gold-light); font-size: 11px; font-weight: 600;
+    }
+    .nav-toggle { display: none; }
+    .menu-backdrop { display: none; }
+
+    /* ---------- buttons ---------- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 48px; padding: 0 26px;
+      border: 1px solid transparent; border-radius: 99px;
+      font: 600 14px/1 var(--sans); letter-spacing: .02em;
+      cursor: pointer; transition: background .25s ease, color .25s ease, border-color .25s ease, box-shadow .3s ease;
+    }
+    .btn-gold { background: var(--gold); color: #120e0a; }
+    .btn-gold:hover { background: var(--gold-light); box-shadow: 0 0 32px var(--glow); }
+    .btn-ghost { border-color: var(--line-strong); color: var(--text); }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold-light); }
+    .link-arrow { display: inline-flex; gap: 8px; color: var(--gold-light); font-weight: 600; font-size: 14px; border-bottom: 1px solid rgba(226,196,142,.35); padding-bottom: 3px; transition: border-color .2s ease; }
+    .link-arrow:hover { border-color: var(--gold-light); }
+
+    /* ---------- hero ---------- */
+    .hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; isolation: isolate; }
+    .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transform: scale(1.08); animation: heroZoom 9s ease-out forwards; }
+    @keyframes heroZoom { to { transform: scale(1); } }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(13,11,9,.92) 0%, rgba(13,11,9,.6) 48%, rgba(13,11,9,.15) 100%),
+        linear-gradient(0deg, var(--bg) 0%, rgba(13,11,9,0) 38%);
+    }
+    .hero-content { padding: 150px 0 60px; }
+    .hero-content > * { max-width: 900px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 14px; color: var(--gold-light); font-size: 12px; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 40px; height: 1px; background: var(--gold); }
+    .hero h1 {
+      margin: 26px 0 28px;
+      font-family: var(--serif);
+      font-size: clamp(48px, 8.4vw, 128px);
+      line-height: .95;
+      letter-spacing: -.01em;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold-light); text-shadow: 0 0 40px rgba(226,196,142,.35); }
+    .hero .lead { max-width: 600px; color: rgba(243,236,224,.78); font-size: 18px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+    .hero-steps { margin-top: 30px; color: var(--muted); font-size: 13px; letter-spacing: .02em; }
+    .hero-steps b { margin: 0 8px; color: var(--gold); font-weight: 400; }
+    .hero-steps a { margin-left: 14px; color: var(--gold-light); border-bottom: 1px solid rgba(226,196,142,.4); }
+    .stats {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+    }
+    .stat { padding: 26px 24px 30px; border-left: 1px solid var(--line); }
+    .stat:first-child { border-left: 0; padding-left: 0; }
+    .stat strong { display: block; font-family: var(--serif); font-size: 34px; font-weight: 500; line-height: 1.05; color: var(--text); }
+    .stat span { display: block; margin-top: 6px; color: var(--muted); font-size: 13px; }
+
+    /* ---------- garland ---------- */
+    .garland { padding: 40px 0 0; }
+    .garland svg { display: block; width: 100%; height: 60px; overflow: visible; }
+    .garland path { stroke: rgba(243,232,214,.14); }
+    .garland circle { fill: #3a3128; transition: fill .5s ease var(--ld, 0ms), filter .5s ease var(--ld, 0ms); }
+    .garland.lit circle { fill: var(--gold-light); filter: drop-shadow(0 0 6px rgba(226,196,142,.95)) drop-shadow(0 0 16px rgba(226,196,142,.5)); animation: twinkle 3.6s ease-in-out infinite; animation-delay: var(--tw, 0s); }
+    @keyframes twinkle { 50% { opacity: .55; } }
+
+    /* ---------- sections ---------- */
+    section { position: relative; }
+    .section { padding: 120px 0; }
+    .section-head { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; margin-bottom: 60px; }
+    .section-head h2 { margin-top: 18px; font-family: var(--serif); font-size: clamp(40px, 5vw, 72px); line-height: 1; }
+    .section-head h2 em { font-style: italic; color: var(--gold-light); }
+    .section-copy { color: var(--muted); font-size: 16px; max-width: 520px; justify-self: end; }
+
+    /* ---------- services: свет включается при наведении ---------- */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .service-card {
+      position: relative; min-height: 520px; overflow: hidden;
+      border-radius: var(--radius); border: 1px solid var(--line);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      transition: border-color .5s ease, box-shadow .5s ease;
+    }
+    .service-card img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2;
+      filter: brightness(.42) saturate(.7);
+      transform: scale(1.04);
+      transition: filter .7s ease, transform 1.2s cubic-bezier(.2,.7,.2,1);
+    }
+    .service-card::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(13,11,9,.95) 0%, rgba(13,11,9,.55) 45%, rgba(13,11,9,0) 75%); }
+    .service-card:hover { border-color: rgba(176,138,82,.55); box-shadow: 0 0 60px rgba(226,196,142,.12); }
+    .service-card:hover img { filter: brightness(.85) saturate(1.05); transform: scale(1); }
+    .service-num { position: absolute; top: 22px; left: 24px; font-family: var(--serif); font-size: 20px; font-style: italic; color: var(--gold-light); }
+    .service-content { padding: 30px 26px 28px; }
+    .service-content h3 { font-family: var(--serif); font-size: 32px; line-height: 1.05; }
+    .service-content p { margin-top: 12px; color: rgba(243,236,224,.7); font-size: 14px; line-height: 1.55; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .tag { padding: 6px 12px; border: 1px solid var(--line-strong); border-radius: 99px; font-size: 12px; color: rgba(243,236,224,.8); transition: border-color .2s ease, color .2s ease; }
+    .tag:hover { border-color: var(--gold); color: var(--gold-light); }
+    .service-link { display: inline-block; margin-top: 20px; color: var(--gold-light); font-size: 13px; font-weight: 600; }
+    .center-cta { display: flex; justify-content: center; margin-top: 56px; }
+
+    /* ---------- statement + compare ---------- */
+    .statement { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .compare-slider { position: relative; aspect-ratio: 16 / 8; overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); --pos: 50%; user-select: none; }
+    .compare-slider__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+    .compare-slider__top { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+    .compare-slider__divider { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 1px; background: var(--gold-light); box-shadow: 0 0 18px var(--gold-light); pointer-events: none; }
+    .compare-slider__divider::before { content: "‹ ›"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: rgba(13,11,9,.75); border: 1px solid var(--gold); color: var(--gold-light); font-size: 18px; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+    .compare-slider__range { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+    .compare-caption { margin-top: 18px; color: var(--muted); font-size: 13px; }
+
+    /* ---------- partners ---------- */
+    .partners { padding: 70px 0; border-bottom: 1px solid var(--line); }
+    .partners-row { display: flex; align-items: center; gap: 40px; }
+    .partners-row h2 { flex: 0 0 auto; font-family: var(--serif); font-size: 30px; }
+    .partners-strip { flex: 1; display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+    .partner-plh { height: 70px; display: grid; place-items: center; border: 1px dashed var(--line-strong); border-radius: var(--radius); color: rgba(243,236,224,.35); font-size: 12px; letter-spacing: .1em; }
+
+    /* ---------- portfolio bento ---------- */
+    .bento { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 280px; gap: 16px; }
+    .bento figure { position: relative; margin: 0; overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); }
+    .bento figure:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+    .bento figure:nth-child(4) { grid-column: span 2; }
+    .bento img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.72); transition: filter .6s ease, transform 1.2s cubic-bezier(.2,.7,.2,1); }
+    .bento figure:hover img { filter: brightness(1); transform: scale(1.04); }
+    .bento figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 60px 22px 20px; background: linear-gradient(0deg, rgba(13,11,9,.9), transparent); }
+    .bento figcaption strong { display: block; font-family: var(--serif); font-size: 24px; font-weight: 500; }
+    .bento figcaption span { color: var(--muted); font-size: 13px; }
+    .portfolio-cta { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: center; margin-top: 50px; }
+
+    /* ---------- contact ---------- */
+    .contact { padding: 120px 0 0; background: radial-gradient(ellipse at 20% 0%, rgba(176,138,82,.14), transparent 55%), var(--bg); }
+    .contact-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; padding-bottom: 110px; }
+    .contact h2 { margin-top: 18px; font-family: var(--serif); font-size: clamp(44px, 5.4vw, 80px); line-height: 1; }
+    .contact .section-copy { margin-top: 22px; justify-self: start; }
+    .contact-list { list-style: none; margin: 36px 0 0; padding: 0; border-top: 1px solid var(--line); }
+    .contact-list li { border-bottom: 1px solid var(--line); }
+    .contact-list a, .contact-list span { display: block; padding: 15px 0; color: rgba(243,236,224,.82); transition: color .2s ease, padding-left .2s ease; }
+    .contact-list a:hover { color: var(--gold-light); padding-left: 8px; }
+    .contact-list span { color: var(--muted); }
+    .form { display: grid; gap: 18px; align-content: start; padding: 38px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+    .form label { display: grid; gap: 8px; color: var(--muted); font-size: 13px; }
+    .field { width: 100%; padding: 14px 16px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--bg); color: var(--text); font: 15px var(--sans); transition: border-color .2s ease, box-shadow .2s ease; }
+    .field:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(176,138,82,.18); }
+    textarea.field { min-height: 110px; resize: vertical; }
+    select.field { appearance: none; }
+    .form-note { color: var(--muted); font-size: 13px; }
+    .form-note a, .privacy a { color: var(--gold-light); }
+    .privacy { grid-template-columns: auto 1fr !important; align-items: start; }
+    .privacy input { margin-top: 3px; accent-color: var(--gold); }
+    .form .btn { width: 100%; }
+
+    /* ---------- footer ---------- */
+    .footer { padding: 70px 0 30px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+    .footer-grid { display: grid; grid-template-columns: 1.3fr repeat(4, 1fr); gap: 32px; }
+    .footer-brand img { height: 44px; width: auto; margin-bottom: 18px; }
+    .footer-brand p { margin-bottom: 16px; max-width: 280px; }
+    .footer-brand a { color: var(--text); }
+    .footer-nav { display: grid; gap: 10px; align-content: start; }
+    .footer-nav a:hover { color: var(--gold-light); }
+    .footer-toggle { padding: 0; margin-bottom: 6px; border: 0; background: none; color: var(--text); font: 600 13px var(--sans); letter-spacing: .08em; text-transform: uppercase; text-align: left; pointer-events: none; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 20px; margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 13px; }
+    .mobile-actionbar { display: none; }
+
+    /* ---------- responsive ---------- */
+    @media (max-width: 1100px) {
+      .phone { display: none; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .partners-row { flex-direction: column; align-items: flex-start; }
+      .partners-strip { width: 100%; grid-template-columns: repeat(3, 1fr); }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 960px) {
+      .nav { min-height: 70px; }
+      .brand img { height: 38px; }
+      .nav-actions .btn { display: none; }
+      .nav-toggle {
+        display: inline-flex; align-items: center; justify-content: center;
+        min-width: 84px; min-height: 44px; margin-left: auto;
+        border: 1px solid var(--line-strong); border-radius: 99px;
+        background: rgba(13,11,9,.6); color: var(--text); font: 600 13px var(--sans); cursor: pointer;
+      }
+      .menu {
+        position: fixed; top: 70px; left: 0; right: 0; bottom: 0;
+        display: flex; flex-direction: column; align-items: stretch; gap: 0;
+        padding: 16px 24px 40px; overflow-y: auto;
+        background: var(--bg);
+        opacity: 0; visibility: hidden; transform: translateY(-10px);
+        transition: opacity .25s ease, transform .25s ease, visibility 0s linear .25s;
+      }
+      body.menu-open .menu { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+      body.menu-open { overflow: hidden; }
+      .nav-item, .nav-item-home { display: flex; flex-wrap: wrap; width: 100%; border-bottom: 1px solid var(--line); }
+      .nav-item > a { flex: 1; min-height: 56px; padding: 0; font-family: var(--serif); font-size: 26px; }
+      .sub-toggle { pointer-events: auto; width: 48px; height: 56px; margin: 0; }
+      .nav-panel { position: static; display: none; width: 100%; max-width: none; min-width: 0; padding: 0 0 12px 8px; background: none; border: 0; box-shadow: none; opacity: 1; visibility: visible; transform: none; transition: none; }
+      .nav-panel::before { display: none; }
+      .nav-item:hover > .nav-panel, .nav-item:focus-within > .nav-panel { transform: none; }
+      .nav-item.open > .nav-panel { display: block; }
+      .nav-item.open .sub-toggle::before { transform: translateY(2px) rotate(225deg); }
+      .nav-panel a { min-height: 44px; font-size: 15px; }
+      .menu-contact { display: block; padding: 16px 0 0; color: var(--gold-light); font-size: 15px; }
+      .section { padding: 84px 0; }
+      .section-head { grid-template-columns: 1fr; gap: 20px; margin-bottom: 40px; }
+      .section-copy { justify-self: start; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stat { padding: 20px 16px 22px; }
+      .stat:nth-child(3) { border-left: 0; padding-left: 0; }
+      .stat:nth-child(n+3) { border-top: 1px solid var(--line); }
+      .stat strong { font-size: 26px; }
+      .contact-panel { grid-template-columns: 1fr; gap: 44px; }
+      .bento { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 220px; }
+      .bento figure:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+      .compare-slider { aspect-ratio: 4 / 3; }
+    }
+    @media (max-width: 640px) {
+      .container { width: calc(100% - 32px); }
+      .hero-content { padding: 120px 0 40px; }
+      .hero .lead { font-size: 16px; }
+      .hero-steps .steps-full { display: none; }
+      .hero-steps a { display: block; width: max-content; margin: 10px 0 0; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card { min-height: 440px; }
+      .service-card img { filter: brightness(.6) saturate(.9); }
+      .partners-strip { grid-template-columns: repeat(2, 1fr); }
+      .bento { grid-template-columns: 1fr; }
+      .bento figure:nth-child(1), .bento figure:nth-child(4) { grid-column: auto; }
+      .form { padding: 24px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; }
+      body { padding-bottom: 70px; }
+      .mobile-actionbar {
+        position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 40;
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 6px;
+        background: rgba(26,22,18,.92); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+        border: 1px solid var(--line-strong); border-radius: 99px;
+        transition: transform .3s ease, opacity .3s ease;
+      }
+      .mobile-actionbar.is-hidden { transform: translateY(120%); opacity: 0; }
+      .mobile-actionbar a { display: grid; place-items: center; min-height: 44px; border-radius: 99px; font-size: 13px; font-weight: 600; }
+      .mobile-actionbar a:last-child { background: var(--gold); color: #120e0a; }
+      .version-badge { top: 78px; }
+    }
+    .steps-short { display: none; }
+    @media (max-width: 640px) { .steps-short { display: inline; } }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+      .hero-bg { transform: none; }
+    }
+  </style>
+</head>
+<body class="dark">
+  <div class="preloader" aria-hidden="true">
+    <div class="preloader__inner">
+      <img class="preloader__logo" src="./assets/images/logo.png" alt="">
+      <div class="preloader__line"></div>
+    </div>
+  </div>
+
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="./" aria-label="SvetoART - главная" target="_blank" rel="noopener"><img src="./assets/images/logo.png" alt="SvetoART"></a>
+      <nav class="menu" aria-label="Главное меню">
+        <div class="nav-item nav-item-home"><a href="./" target="_blank" rel="noopener">Главная</a></div>
+        <div class="nav-item has-panel"><a href="./uslugi/" aria-haspopup="true" aria-expanded="false" target="_blank" rel="noopener">Услуги</a><button class="sub-toggle" type="button" aria-expanded="false" aria-label="Подразделы: Услуги"></button><div class="nav-panel"><a href="./uslugi/" target="_blank" rel="noopener">Световое декоративное оформление</a><a href="./oformlenie-meropriyatij/" target="_blank" rel="noopener">Световое и декоративное оформление мероприятий</a><a href="./arenda/" target="_blank" rel="noopener">Аренда светового и декоративного оборудования</a></div></div>
+        <div class="nav-item has-panel"><a href="./novogodnie-motivy/" aria-haspopup="true" aria-expanded="false" target="_blank" rel="noopener">Оформление</a><button class="sub-toggle" type="button" aria-expanded="false" aria-label="Подразделы: Оформление"></button><div class="nav-panel"><a href="./novyj-god-dekorativnoe-svetovoe-oformlenie-doma/" target="_blank" rel="noopener">Новогоднее оформление фасадов</a><a href="./konturnoe-osveschenie/" target="_blank" rel="noopener">Декоративное оформление входных групп</a><a href="./svetovoe-oformlenie-doma/" target="_blank" rel="noopener">Уличное световое оформление</a><a href="./oformlenie-meropriyatij/" target="_blank" rel="noopener">Оформление мероприятий</a></div></div>
+        <div class="nav-item has-panel"><a href="./arenda/" aria-haspopup="true" aria-expanded="false" target="_blank" rel="noopener">Аренда</a><button class="sub-toggle" type="button" aria-expanded="false" aria-label="Подразделы: Аренда"></button><div class="nav-panel"><a href="./assortiment/" target="_blank" rel="noopener">Ассортимент</a></div></div>
+        <div class="nav-item"><a href="./portfolio/uslugi-svetoart/" target="_blank" rel="noopener">Портфолио</a></div>
+        <div class="nav-item has-panel"><a href="./about/" aria-haspopup="true" aria-expanded="false" target="_blank" rel="noopener">О компании</a><button class="sub-toggle" type="button" aria-expanded="false" aria-label="Подразделы: О компании"></button><div class="nav-panel"><a href="./about/" target="_blank" rel="noopener">О нас</a><a href="./kak-my-rabotaem/" target="_blank" rel="noopener">Как мы работаем</a><a href="./dostavka-i-oplata/" target="_blank" rel="noopener">Доставка и оплата</a></div></div>
+        <div class="nav-item"><a href="./kontakty/" target="_blank" rel="noopener">Контакты</a></div>
+        <a class="menu-contact" href="tel:+79967130405">+7 (996) 713-04-05</a>
+        <a class="menu-contact" href="https://t.me/svetoART" target="_blank" rel="noopener noreferrer">Telegram: t.me/svetoART</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="phone" href="tel:+79967130405">+7 (996) 713-04-05</a>
+        <a class="btn btn-gold" href="#contacts">Оставить заявку</a>
+      </div>
+      <button class="nav-toggle" type="button" aria-label="Открыть меню" aria-expanded="false">Меню</button>
+    </div>
+  </header>
+  <span class="version-badge" aria-label="Текущая версия сайта">версия 3</span>
+
+  <main id="top">
+    <section class="hero" aria-label="Первый экран">
+      <img class="hero-bg" src="./assets/images/bank-svet.jpg" alt="Декоративное световое оформление фасада" fetchpriority="high">
+      <div class="container hero-content">
+        <p class="eyebrow">SvetoART · с 2007 года</p>
+        <h1>Декоративное <em>световое</em> оформление</h1>
+        <p class="lead">Компания SvetoART разрабатывает световое декоративное оформление для частных лиц, бюджетных организаций, коммерческих пространств и мероприятий</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#contacts">Оставить заявку</a>
+          <a class="btn btn-ghost" href="./portfolio/uslugi-svetoart/" target="_blank" rel="noopener">Смотреть работы</a>
+        </div>
+        <p class="hero-steps">
+          <span class="steps-full">Консультация <b>→</b> Визуализация <b>→</b> Замеры <b>→</b> Смета <b>→</b> Монтаж <b>→</b> Демонтаж</span>
+          <span class="steps-short">Консультация <b>→</b> … <b>→</b> Монтаж под ключ</span>
+          <a href="./kak-my-rabotaem/" target="_blank" rel="noopener">Как мы работаем →</a>
+        </p>
+      </div>
+      <div class="container stats">
+        <div class="stat"><strong>С 2007 года</strong><span>Более 19 лет на рынке</span></div>
+        <div class="stat"><strong>200+ объектов</strong><span>Реализовано под ключ</span></div>
+        <div class="stat"><strong>Аренда и производство</strong><span>Декор и изготовление на заказ</span></div>
+        <div class="stat"><strong>Москва и область</strong><span>Выезд специалиста на объект</span></div>
+      </div>
+    </section>
+
+    <div class="container garland" id="garland" aria-hidden="true">
+      <svg viewBox="0 0 1200 60" preserveAspectRatio="none" focusable="false">
+        <path d="M0,18 Q60,48 120,30 T240,30 T360,30 T480,30 T600,30 T720,30 T840,30 T960,30 T1080,30 T1200,18" fill="none" stroke-width="1"/>
+        <circle cx="60" cy="38" r="3.5"/><circle cx="180" cy="36" r="3.5"/><circle cx="300" cy="36" r="3.5"/><circle cx="420" cy="36" r="3.5"/><circle cx="540" cy="36" r="3.5"/><circle cx="660" cy="36" r="3.5"/><circle cx="780" cy="36" r="3.5"/><circle cx="900" cy="36" r="3.5"/><circle cx="1020" cy="36" r="3.5"/><circle cx="1140" cy="36" r="3.5"/>
+      </svg>
+    </div>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow">Направления</p>
+            <h2>Наши <em>услуги</em></h2>
+          </div>
+          <p class="section-copy">Специалисты компании SvetoART готовы помочь реализовать любые ваши идеи в области светового и светодиодного оформления.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <img src="./assets/images/bank-svet.jpg" alt="Световое оформление фасада здания" loading="lazy">
+            <span class="service-num">01</span>
+            <div class="service-content">
+              <h3>Фасады и входные группы</h3>
+              <p>Световое декоративное оформление фасадов зданий и входных групп. Контурная подсветка, уличное оформление.</p>
+              <div class="tag-row"><a class="tag" href="./konturnoe-osveschenie/" target="_blank" rel="noopener">Фасады</a><a class="tag" href="./prazdnichnoe-oformlenie-torgovih-zalov/" target="_blank" rel="noopener">Витрины</a><a class="tag" href="./konturnoe-osveschenie/" target="_blank" rel="noopener">Входные группы</a></div>
+              <a class="service-link" href="./konturnoe-osveschenie/" target="_blank" rel="noopener">Подробнее о контурном освещении →</a>
+            </div>
+          </article>
+          <article class="service-card reveal">
+            <img src="./assets/images/project-evening.jpg" alt="Новогоднее оформление елки" loading="lazy">
+            <span class="service-num">02</span>
+            <div class="service-content">
+              <h3>Новогоднее оформление</h3>
+              <p>Новогоднее световое оформление загородных домов, уличное декоративное освещение. Оформление гирляндами деревьев, елей и кустарников.</p>
+              <div class="tag-row"><a class="tag" href="./novyj-god-dekorativnoe-svetovoe-oformlenie-doma/" target="_blank" rel="noopener">Загородные дома</a><a class="tag" href="./novogodnie-motivy/" target="_blank" rel="noopener">Деревья и ели</a><a class="tag" href="./novogodnie-motivy/" target="_blank" rel="noopener">Парки и улицы</a></div>
+              <a class="service-link" href="./novogodnie-motivy/" target="_blank" rel="noopener">Новогодние мотивы →</a>
+            </div>
+          </article>
+          <article class="service-card reveal">
+            <img src="./assets/images/svetoart-decor.jpg" alt="Оформление мероприятия световым декором" loading="lazy">
+            <span class="service-num">03</span>
+            <div class="service-content">
+              <h3>Мероприятия и шатры</h3>
+              <p>Оформление мероприятий - свадеб, корпоративов, съемок и конференций. Световое оформление шатров и свадебных площадок.</p>
+              <div class="tag-row"><a class="tag" href="./svetovoe-oformlenie-dlya-svadby/" target="_blank" rel="noopener">Свадьбы</a><a class="tag" href="./oformlenie-meropriyatij/" target="_blank" rel="noopener">Выпускные</a><a class="tag" href="./svetovoe-oformlenie-shatrov/" target="_blank" rel="noopener">Шатры и площадки</a></div>
+              <a class="service-link" href="./oformlenie-meropriyatij/" target="_blank" rel="noopener">Оформление мероприятий →</a>
+            </div>
+          </article>
+          <article class="service-card reveal">
+            <img src="./assets/images/garland-supports.jpg" alt="Ретро-гирлянды для аренды" loading="lazy">
+            <span class="service-num">04</span>
+            <div class="service-content">
+              <h3>Аренда светового декора</h3>
+              <p>Аренда светового декора: ретро-гирлянды, светодиодные изделия, бахрома, новогодняя ель в аренду, фотозона в аренду, гирлянды для фото-, кино- и видеосъемок.</p>
+              <div class="tag-row"><a class="tag" href="./arenda/" target="_blank" rel="noopener">Гирлянды для вечеринок</a><a class="tag" href="./novogodnyaya-fotozona-v-arendu/" target="_blank" rel="noopener">Фотозоны</a><a class="tag" href="./arenda/" target="_blank" rel="noopener">Фото и киносъёмки</a></div>
+              <a class="service-link" href="./arenda/" target="_blank" rel="noopener">Посмотреть аренду →</a>
+            </div>
+          </article>
+          <article class="service-card reveal">
+            <img src="./assets/images/light-motif.jpg" alt="Световое оборудование и конструкции" loading="lazy">
+            <span class="service-num">05</span>
+            <div class="service-content">
+              <h3>Продажа и производство</h3>
+              <p>Продажа гирлянд: бахрома, занавесы, хвойные гирлянды, светодиодные нити и ретро-гирлянды. Производство на заказ: светодиодные праздничные конструкции, консоли и мотивы, световые фигуры оленей и персонажей.</p>
+              <div class="tag-row"><a class="tag" href="./assortiment/" target="_blank" rel="noopener">Гирлянды</a><a class="tag" href="./svetovie-konstrukcii/" target="_blank" rel="noopener">Фигуры</a><a class="tag" href="./svetodiodnue-motuvu/" target="_blank" rel="noopener">Мотивы</a></div>
+              <a class="service-link" href="./assortiment/" target="_blank" rel="noopener">Перейти в ассортимент →</a>
+            </div>
+          </article>
+          <article class="service-card reveal">
+            <img src="./assets/images/hall-light.jpg" alt="Световое оформление ресторана" loading="lazy">
+            <span class="service-num">06</span>
+            <div class="service-content">
+              <h3>Рестораны, клубы, магазины и общественные пространства</h3>
+              <p>Световое оформление ресторанов, витрин магазинов, торговых залов. Праздничный световой декор для общественных интерьеров.</p>
+              <div class="tag-row"><a class="tag" href="./svetovoe-oformlenie-restorana/" target="_blank" rel="noopener">Рестораны</a><a class="tag" href="./prazdnichnoe-oformlenie-torgovih-zalov/" target="_blank" rel="noopener">Торговые залы и витрины</a><a class="tag" href="./oformlenie-ofisa-k-novomu-godu-svetovoj-dekor/" target="_blank" rel="noopener">Офисы</a></div>
+              <a class="service-link" href="./svetovoe-oformlenie-restorana/" target="_blank" rel="noopener">Оформление ресторанов →</a>
+            </div>
+          </article>
+        </div>
+        <div class="center-cta"><a class="btn btn-ghost" href="./uslugi/" target="_blank" rel="noopener">Все услуги →</a></div>
+      </div>
+    </section>
+
+    <section class="section statement">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow">Галерея</p>
+            <h2>Как выглядит <em>световое</em> оформление</h2>
+          </div>
+          <p class="section-copy">Световое декоративное оформление успешно справляется с задачей преображения объектов - из будничных оно помогает превратить их в яркие, эффектные и привлекательные на фоне прочих.</p>
+        </div>
+        <div class="compare-slider reveal" id="compareSlider">
+          <img class="compare-slider__img" src="./assets/images/restaurant-project.jpg" alt="Декоративное световое оформление объекта" loading="lazy">
+          <div class="compare-slider__top" aria-hidden="true">
+            <img class="compare-slider__img" src="./assets/images/gallery-light.jpg" alt="" loading="lazy">
+          </div>
+          <div class="compare-slider__divider" aria-hidden="true"></div>
+          <input class="compare-slider__range" type="range" min="0" max="100" value="50" aria-label="Перетащите, чтобы сравнить фотографии светового оформления">
+        </div>
+        <p class="compare-caption">Примеры декоративного светового оформления объектов</p>
+      </div>
+    </section>
+
+    <section class="partners">
+      <div class="container partners-row reveal">
+        <h2>Наши партнёры</h2>
+        <div class="partners-strip">
+          <div class="partner-plh">ЛОГОТИП</div><div class="partner-plh">ЛОГОТИП</div><div class="partner-plh">ЛОГОТИП</div><div class="partner-plh">ЛОГОТИП</div><div class="partner-plh">ЛОГОТИП</div><div class="partner-plh">ЛОГОТИП</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="portfolio">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow">Портфолио</p>
+            <h2>Реализованные <em>проекты</em></h2>
+          </div>
+          <p class="section-copy">Примеры наших работ: фасады, мероприятия, новогоднее оформление, аренда светового декора.</p>
+        </div>
+        <div class="bento">
+          <figure class="reveal"><img src="./assets/images/svetoart-decor.jpg" alt="Декоративный световой декор" loading="lazy"><figcaption><strong>Оформление мероприятий</strong><span>Световой декор</span></figcaption></figure>
+          <figure class="reveal"><img src="./assets/images/facade-project.jpg" alt="Световое оформление фасада" loading="lazy"><figcaption><strong>Фасады и входные группы</strong><span>Контурная подсветка</span></figcaption></figure>
+          <figure class="reveal"><img src="./assets/images/wedding-project.jpg" alt="Свадебное оформление светом" loading="lazy"><figcaption><strong>Свадебные площадки</strong><span>Световое оформление шатров</span></figcaption></figure>
+          <figure class="reveal"><img src="./assets/images/project-evening.jpg" alt="Новогоднее оформление дома и офиса" loading="lazy"><figcaption><strong>Новогоднее оформление</strong><span>Здания, улицы, дома и офисы</span></figcaption></figure>
+        </div>
+        <div class="portfolio-cta">
+          <a class="btn btn-gold" href="#contacts">Связаться с нами</a>
+          <a class="link-arrow" href="./portfolio/uslugi-svetoart/" target="_blank" rel="noopener">Все услуги и примеры работ →</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews" hidden>
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">Отзывы</p><h2>Отзывы наших клиентов</h2></div>
+          <p class="section-copy">Отзывы клиентов публикуются после согласования текста.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts" class="contact">
+      <div class="container">
+        <div class="contact-panel">
+          <div class="reveal">
+            <p class="eyebrow">Связь</p>
+            <h2>Свяжитесь <em>с нами</em></h2>
+            <p class="section-copy">Вы всегда можете проконсультироваться или пригласить дизайнера, отправив заявку на почту или оставив сообщение в мессенджерах. Мы свяжемся с вами в ближайшее время.</p>
+            <ul class="contact-list">
+              <li><a href="tel:+79967130405">+7 (996) 713-04-05</a></li>
+              <li><a href="mailto:info@svetoart.ru">info@svetoart.ru</a></li>
+              <li><a href="https://t.me/svetoART" target="_blank" rel="noopener noreferrer">Telegram: t.me/svetoART</a></li>
+              <li><a href="https://vk.com/infosvetoart" target="_blank" rel="noopener noreferrer">ВКонтакте: vk.com/infosvetoart</a></li>
+              <li><a href="./kontakty/" target="_blank" rel="noopener">Адрес, реквизиты и режим работы →</a></li>
+              <li><span>Москва и Московская область</span></li>
+            </ul>
+          </div>
+          <form class="form reveal" action="https://formsubmit.co/info@svetoart.ru" method="post">
+            <input type="hidden" name="_subject" value="Заявка с сайта SvetoART">
+            <input type="hidden" name="page_url" value="https://wwoldem.github.io/test-of-the-SvetoArt2/">
+            <input type="hidden" name="_next" value="https://wwoldem.github.io/test-of-the-SvetoArt2/thanks/">
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
+            <label>Имя<input class="field" name="name" placeholder="Ваше имя" autocomplete="name" required></label>
+            <label>Телефон или Telegram<input class="field" name="phone" placeholder="+7 или @username" autocomplete="off" required></label>
+            <label>Тип проекта
+              <select class="field" name="service" aria-label="Тип проекта">
+                <option>Световое оформление под ключ</option>
+                <option>Аренда светового декора</option>
+                <option>Новогоднее оформление</option>
+                <option>Фасад или входная группа</option>
+                <option>Покупка оборудования</option>
+              </select>
+            </label>
+            <label>Объект, даты и пожелания<textarea class="field" name="message" placeholder="Опишите объект, даты и зоны оформления"></textarea></label>
+            <p class="form-note">Вы можете оставить сообщение в Telegram: <a href="https://t.me/svetoART" target="_blank" rel="noopener noreferrer">t.me/svetoART</a>. Мы свяжемся с вами в ближайшее время.</p>
+            <label class="privacy"><input type="checkbox" name="privacy" required><span>Согласен(-а) на <a href="./privacy/" target="_blank" rel="noopener">обработку персональных данных</a> и обратную связь по заявке.</span></label>
+            <button class="btn btn-gold" type="submit">Отправить заявку</button>
+          </form>
+        </div>
+      </div>
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-grid">
+            <div class="footer-brand">
+              <img src="./assets/images/logo.png" alt="SvetoART">
+              <p>Декоративное световое оформление объектов и мероприятий в Москве и Московской области.</p>
+              <a href="tel:+79967130405">+7 (996) 713-04-05</a><br>
+              <a href="mailto:info@svetoart.ru">info@svetoart.ru</a>
+            </div>
+            <nav class="footer-nav" aria-label="Компания">
+              <button class="footer-toggle" type="button" aria-expanded="false">Компания</button>
+              <a href="./" target="_blank" rel="noopener">Главная</a>
+              <a href="./about/" target="_blank" rel="noopener">О компании</a>
+              <a href="./portfolio/uslugi-svetoart/" target="_blank" rel="noopener">Услуги и портфолио</a>
+              <a href="./dostavka-i-oplata/" target="_blank" rel="noopener">Доставка и оплата</a>
+              <a href="./kontakty/" target="_blank" rel="noopener">Контакты</a>
+              <a href="./privacy/" target="_blank" rel="noopener">Политика конфиденциальности</a>
+            </nav>
+            <nav class="footer-nav" aria-label="Световое оформление">
+              <button class="footer-toggle" type="button" aria-expanded="false">Оформление</button>
+              <a href="./novogodnie-motivy/" target="_blank" rel="noopener">Новогодние мотивы</a>
+              <a href="./oformlenie-meropriyatij/" target="_blank" rel="noopener">Оформление мероприятий</a>
+              <a href="./svetovoe-oformlenie-shatrov/" target="_blank" rel="noopener">Оформление шатров</a>
+              <a href="./svetovoe-oformlenie-dlya-svadby/" target="_blank" rel="noopener">Оформление свадьбы</a>
+              <a href="./prazdnichnoe-oformlenie-torgovih-zalov/" target="_blank" rel="noopener">Оформление торговых залов</a>
+              <a href="./svetovoe-oformlenie-restorana/" target="_blank" rel="noopener">Оформление ресторанов</a>
+              <a href="./svetovoe-oformlenie-doma/" target="_blank" rel="noopener">Оформление дома</a>
+              <a href="./konturnoe-osveschenie/" target="_blank" rel="noopener">Контурное освещение</a>
+            </nav>
+            <nav class="footer-nav" aria-label="Аренда и ассортимент">
+              <button class="footer-toggle" type="button" aria-expanded="false">Аренда и ассортимент</button>
+              <a href="./arenda/" target="_blank" rel="noopener">Аренда светового декора</a>
+              <a href="./girlyandy-dlya-svadby/" target="_blank" rel="noopener">Гирлянды для свадьбы</a>
+              <a href="./assortiment/" target="_blank" rel="noopener">Ассортимент</a>
+              <a href="./retro-girlyanda/" target="_blank" rel="noopener">Ретро-гирлянды</a>
+              <a href="./svetodiodnue-motuvu/" target="_blank" rel="noopener">Светодиодные мотивы</a>
+              <a href="./svetovie-konstrukcii/" target="_blank" rel="noopener">Световые конструкции</a>
+              <a href="./decor-xvoyya/" target="_blank" rel="noopener">Декоративная хвоя</a>
+              <a href="./arenda-svetodiodnyx-izdelijbaxroma/" target="_blank" rel="noopener">Светодиодные изделия и бахрома</a>
+              <a href="./arenda/svetovogo-oborudovania/" target="_blank" rel="noopener">Аренда светового оборудования</a>
+            </nav>
+            <nav class="footer-nav" aria-label="Полезные материалы">
+              <button class="footer-toggle" type="button" aria-expanded="false">Полезное</button>
+              <a href="./novyj-god-dekorativnoe-svetovoe-oformlenie-doma/" target="_blank" rel="noopener">Новогоднее оформление дома</a>
+              <a href="./oformlenie-ofisa-k-novomu-godu-svetovoj-dekor/" target="_blank" rel="noopener">Новогоднее оформление офиса</a>
+            </nav>
+          </div>
+          <div class="footer-bottom">
+            <span>© 2026 SvetoART - декоративное световое оформление</span>
+            <span>Москва и Московская область</span>
+          </div>
+        </div>
+      </footer>
+    </section>
+  </main>
+
+  <nav class="mobile-actionbar" aria-label="Быстрые действия">
+    <a href="tel:+79967130405">Звонок</a>
+    <a href="https://t.me/svetoART" target="_blank" rel="noopener noreferrer">Telegram</a>
+    <a href="#contacts">Заявка</a>
+  </nav>
+
+  <script>
+    (() => {
+      const pre = document.querySelector(".preloader");
+      const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let seen = false;
+      try { seen = sessionStorage.getItem("svetoart-v3-seen") === "1"; } catch (_) {}
+      if (seen || reduced) { pre?.remove(); return; }
+      try { sessionStorage.setItem("svetoart-v3-seen", "1"); } catch (_) {}
+      setTimeout(() => pre?.classList.add("is-done"), 1500);
+      setTimeout(() => pre?.remove(), 2200);
+    })();
+  </script>
+  <script src="./assets/js/cursor.js" defer></script>
+  <script>
+    const topbar = document.querySelector(".topbar");
+    const onScroll = () => topbar.classList.toggle("is-scrolled", window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    const navToggle = document.querySelector(".nav-toggle");
+    const setMenu = (open) => {
+      document.body.classList.toggle("menu-open", open);
+      navToggle.setAttribute("aria-expanded", String(open));
+      navToggle.textContent = open ? "Закрыть" : "Меню";
+    };
+    navToggle.addEventListener("click", () => setMenu(!document.body.classList.contains("menu-open")));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenu(false); });
+    window.addEventListener("resize", () => { if (innerWidth > 960) setMenu(false); });
+
+    document.querySelectorAll(".nav-item.has-panel").forEach((item) => {
+      const link = item.querySelector("a");
+      const toggle = item.querySelector(".sub-toggle");
+      const setExpanded = (open) => {
+        item.classList.toggle("open", open);
+        link.setAttribute("aria-expanded", String(open));
+        toggle.setAttribute("aria-expanded", String(open));
+      };
+      const desktopHover = () => matchMedia("(hover: hover) and (min-width: 961px)").matches;
+      toggle.addEventListener("click", (e) => { e.preventDefault(); setExpanded(!item.classList.contains("open")); });
+      item.addEventListener("mouseenter", () => { if (desktopHover()) setExpanded(true); });
+      item.addEventListener("mouseleave", () => { if (desktopHover()) setExpanded(false); });
+      item.addEventListener("focusout", (e) => { if (!item.contains(e.relatedTarget)) setExpanded(false); });
+    });
+
+    document.querySelectorAll(".reveal").forEach((el) => {
+      const siblings = [...el.parentElement.children].filter((n) => n.classList.contains("reveal"));
+      el.style.setProperty("--d", `${Math.min(siblings.indexOf(el), 5) * 90}ms`);
+    });
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) { entry.target.classList.add("is-visible"); revealObs.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    document.querySelectorAll(".reveal").forEach((el) => revealObs.observe(el));
+
+    const garland = document.getElementById("garland");
+    if (garland) {
+      garland.querySelectorAll("circle").forEach((c, i) => {
+        c.style.setProperty("--ld", `${i * 90}ms`);
+        c.style.setProperty("--tw", `${(i % 4) * .7}s`);
+      });
+      const gObs = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) { garland.classList.add("lit"); gObs.disconnect(); }
+      }, { threshold: 0.5 });
+      gObs.observe(garland);
+    }
+
+    const slider = document.getElementById("compareSlider");
+    if (slider) {
+      const range = slider.querySelector(".compare-slider__range");
+      const update = () => slider.style.setProperty("--pos", range.value + "%");
+      range.addEventListener("input", update);
+      update();
+    }
+
+    const contacts = document.getElementById("contacts");
+    const actionbar = document.querySelector(".mobile-actionbar");
+    if (contacts && actionbar) {
+      new IntersectionObserver(([entry]) => actionbar.classList.toggle("is-hidden", entry.isIntersecting), { threshold: 0.1 }).observe(contacts);
+    }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://wwoldem.github.io/test-of-the-SvetoArt2/#business",
+    "name": "SvetoART",
+    "description": "Декоративное световое оформление фасадов, домов, улиц и мероприятий в Москве и Московской области.",
+    "url": "https://wwoldem.github.io/test-of-the-SvetoArt2/",
+    "image": "https://wwoldem.github.io/test-of-the-SvetoArt2/assets/images/bank-svet.jpg",
+    "logo": "https://wwoldem.github.io/test-of-the-SvetoArt2/assets/images/logo.png",
+    "telephone": "+7-996-713-04-05",
+    "email": "info@svetoart.ru",
+    "priceRange": "₽₽",
+    "openingHours": "Mo-Fr 10:00-19:00",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Москва",
+      "streetAddress": "ул. Пришвина, д. 26, склад 26",
+      "addressCountry": "RU"
+    },
+    "areaServed": ["Москва", "Московская область"],
+    "sameAs": ["https://vk.com/infosvetoart", "https://t.me/svetoART"],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+7-996-713-04-05",
+      "contactType": "customer service",
+      "availableLanguage": "Russian"
+    }
+  }
+  </script>
+</body>
+</html>
