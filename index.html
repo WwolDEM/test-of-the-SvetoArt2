@@ -247,17 +247,20 @@
 
     /* ---------- partners ---------- */
     .partners { padding: 70px 0; border-bottom: 1px solid var(--line); }
-    .partners-row { display: flex; align-items: center; gap: 40px; }
-    .partners-row h2 { flex: 0 0 auto; font-family: var(--serif); font-size: 30px; }
-    .partners-strip { flex: 1; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
-    .partner-name {
-      display: grid; place-items: center; min-height: 70px; padding: 10px 14px;
-      border: 1px solid var(--line); border-radius: var(--radius);
-      font-family: var(--serif); font-size: 19px; line-height: 1.15; text-align: center;
-      color: rgba(243,236,224,.82); transition: border-color .3s ease, color .3s ease;
+    .partners-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 20px; margin-bottom: 28px; }
+    .partners-head h2 { font-family: var(--serif); font-size: 30px; }
+    .partners-head p { color: var(--muted); font-size: 14px; }
+    .partners-grid { display: grid; grid-template-columns: repeat(11, minmax(0, 1fr)); gap: 12px; }
+    .partner { margin: 0; text-align: center; }
+    .partner-logo {
+      aspect-ratio: 1; display: grid; place-items: center; overflow: hidden;
+      background: #efe7da; border-radius: var(--radius); opacity: .9;
+      transition: opacity .3s ease, transform .3s ease, box-shadow .3s ease;
     }
-    .partner-name:hover { border-color: rgba(176,138,82,.5); color: var(--gold-light); }
-    .partner-plh { height: 70px; display: grid; place-items: center; border: 1px dashed var(--line-strong); border-radius: var(--radius); color: rgba(243,236,224,.35); font-size: 12px; letter-spacing: .1em; }
+    .partner-logo img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+    .partner-logo--text { padding: 8px; color: #1a1612; font-family: var(--serif); font-size: 16px; line-height: 1.1; }
+    .partner:hover .partner-logo { opacity: 1; transform: translateY(-2px); box-shadow: 0 0 34px rgba(226,196,142,.2); }
+    .partner figcaption { margin-top: 8px; color: var(--muted); font-size: 11px; line-height: 1.3; }
 
     /* ---------- portfolio bento ---------- */
     .bento { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 280px; gap: 16px; }
@@ -312,8 +315,7 @@
     @media (max-width: 1100px) {
       .phone { display: none; }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .partners-row { flex-direction: column; align-items: flex-start; }
-      .partners-strip { width: 100%; grid-template-columns: repeat(3, 1fr); }
+      .partners-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
       .footer-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 960px) {
@@ -369,7 +371,7 @@
       .services-grid { grid-template-columns: 1fr; }
       .service-card { min-height: 440px; }
       .service-card img { filter: brightness(.6) saturate(.9); }
-      .partners-strip { grid-template-columns: repeat(2, 1fr); }
+      .partners-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
       .bento { grid-template-columns: 1fr; }
       .bento figure:nth-child(1), .bento figure:nth-child(4) { grid-column: auto; }
       .form { padding: 24px; }
@@ -430,7 +432,7 @@
       <a class="brand" href="./" aria-label="SvetoART - главная"><img src="./assets/images/logo.png" alt="SvetoART"></a>
       <nav class="menu" aria-label="Главное меню">
         <div class="nav-item nav-item-home"><a href="./">Главная</a></div>
-        <div class="nav-item has-panel"><a href="./uslugi/" aria-haspopup="true" aria-expanded="false">Услуги</a><button class="sub-toggle" type="button" aria-expanded="false" aria-label="Подразделы: Услуги"></button><div class="nav-panel"><a href="./uslugi/">Световое декоративное оформление</a><a href="./oformlenie-meropriyatij/">Световое и декоративное оформление мероприятий</a><a href="./arenda/">Аренда светового и декоративного оборудования</a></div></div>
+        <div class="nav-item has-panel"><a href="./uslugi/" aria-haspopup="true" aria-expanded="false">Услуги</a><button class="sub-toggle" type="button" aria-expanded="false" aria-label="Подразделы: Услуги"></button><div class="nav-panel"><a href="./konturnoe-osveschenie/">Световое декоративное оформление фасадов</a><a href="./oformlenie-meropriyatij/">Световое и декоративное оформление мероприятий</a><a href="./arenda/">Аренда светового и декоративного оборудования</a></div></div>
         <div class="nav-item has-panel"><a href="./oformlenie/" aria-haspopup="true" aria-expanded="false">Оформление</a><button class="sub-toggle" type="button" aria-expanded="false" aria-label="Подразделы: Оформление"></button><div class="nav-panel"><a href="./novyj-god-dekorativnoe-svetovoe-oformlenie-doma/">Новогоднее оформление фасадов</a><a href="./konturnoe-osveschenie/">Декоративное оформление входных групп</a><a href="./svetovoe-oformlenie-doma/">Уличное световое оформление</a><a href="./oformlenie-meropriyatij/">Оформление мероприятий</a></div></div>
         <div class="nav-item has-panel"><a href="./arenda/" aria-haspopup="true" aria-expanded="false">Аренда</a><button class="sub-toggle" type="button" aria-expanded="false" aria-label="Подразделы: Аренда"></button><div class="nav-panel"><a href="./assortiment/">Ассортимент</a></div></div>
         <div class="nav-item"><a href="./portfolio/uslugi-svetoart/">Портфолио</a></div>
@@ -454,7 +456,7 @@
       <div class="container hero-content">
         <p class="eyebrow">SvetoART</p>
         <h1>Декоративное <em>световое</em> оформление</h1>
-        <p class="lead">Компания SvetoART разрабатывает световое декоративное оформление для частных лиц, бюджетных организаций, коммерческих пространств и мероприятий</p>
+        <p class="lead">Компания SvetoART предлагает декоративное и световое оформление для частных лиц, бюджетных организаций, коммерческих пространств, киносъёмок и различных мероприятий</p>
         <p class="hero-steps">
           <span class="steps-full">Консультация <b>→</b> Визуализация <b>→</b> Замеры <b>→</b> Смета <b>→</b> Монтаж <b>→</b> Демонтаж</span>
           <span class="steps-short">Консультация <b>→</b> … <b>→</b> Монтаж под ключ</span>
@@ -483,18 +485,18 @@
             <p class="eyebrow">Направления</p>
             <h2>Наши <em>услуги</em></h2>
           </div>
-          <p class="section-copy">Специалисты компании SvetoART готовы помочь реализовать любые ваши идеи в области светового и светодиодного оформления.</p>
+          <p class="section-copy">Специалисты компании SvetoART готовы помочь реализовать любые ваши идеи в области светового и декоративного оформления.</p>
         </div>
         <div class="services-grid">
           <article class="service-card reveal">
-            <img src="./assets/images/bank-svet.jpg" alt="Световое оформление фасада здания" loading="lazy">
+            <img src="./assets/images/service-fasady.jpg" alt="Праздничное световое оформление фасада Дома-музея М. Н. Ермоловой" loading="lazy">
             <span class="service-num">01</span>
             <div class="service-content">
               <h3>Фасады и входные группы</h3>
               <p>Световое декоративное оформление фасадов зданий и входных групп. Контурная подсветка, уличное оформление.</p>
-              <ul class="service-meta"><li>контурная подсветка</li><li>оформление фасадов</li><li>входные группы</li></ul>
+              <ul class="service-meta"><li>декоративное оформление</li><li>оформление фасадов</li><li>входные группы</li></ul>
               <div class="tag-row"><a class="tag" href="./konturnoe-osveschenie/">Фасады</a><a class="tag" href="./prazdnichnoe-oformlenie-torgovih-zalov/">Витрины</a><a class="tag" href="./konturnoe-osveschenie/">Входные группы</a></div>
-              <a class="service-link" href="./konturnoe-osveschenie/">Подробнее о контурном освещении →</a>
+              <a class="service-link" href="./konturnoe-osveschenie/">Подробнее о праздничном освещении →</a>
             </div>
           </article>
           <article class="service-card reveal">
@@ -502,14 +504,14 @@
             <span class="service-num">02</span>
             <div class="service-content">
               <h3>Новогоднее оформление для частных лиц</h3>
-              <p>Новогоднее световое оформление загородных домов, уличное декоративное освещение. Оформление гирляндами деревьев, елей и кустарников.</p>
+              <p>Новогоднее оформление загородных домов, уличное декоративное освещение. Оформление гирляндами деревьев, елей и кустарников.</p>
               <ul class="service-meta"><li>загородные дома</li><li>деревья и ели</li><li>новогодний декор в аренду</li></ul>
               <div class="tag-row"><a class="tag" href="./novyj-god-dekorativnoe-svetovoe-oformlenie-doma/">Загородные дома</a><a class="tag" href="./novogodnie-motivy/">Деревья и ели</a><a class="tag" href="./arenda/">Новогодний декор в аренду</a></div>
-              <a class="service-link" href="./novogodnie-motivy/">Новогодние мотивы →</a>
+              <a class="service-link" href="./novyj-god-dekorativnoe-svetovoe-oformlenie-doma/">Новогоднее оформление коттеджей →</a>
             </div>
           </article>
           <article class="service-card reveal">
-            <img src="./assets/images/svetoart-decor.jpg" alt="Оформление мероприятия световым декором" loading="lazy">
+            <img src="./assets/images/service-meropriyatiya.jpg" alt="Световое оформление сцены мероприятия" loading="lazy">
             <span class="service-num">03</span>
             <div class="service-content">
               <h3>Оформление мероприятий</h3>
@@ -520,11 +522,11 @@
             </div>
           </article>
           <article class="service-card reveal">
-            <img src="./assets/images/garland-supports.jpg" alt="Ретро-гирлянды для аренды" loading="lazy">
+            <img src="./assets/images/service-arenda.jpg" alt="Новогодний декор в аренду: ель с шарами и гирляндой" loading="lazy">
             <span class="service-num">04</span>
             <div class="service-content">
               <h3>Аренда светового декора</h3>
-              <p>Аренда светового декора: ретро-гирлянды, светодиодные изделия, бахрома, новогодняя ель в аренду, фотозона в аренду, гирлянды для фото-, кино- и видеосъемок.</p>
+              <p>Аренда светового декора: ретро-гирлянды, световые занавесы, гирлянды для кино- и фотосъёмок, новогодний декор.</p>
               <ul class="service-meta"><li>гирлянды</li><li>новогодние ёлки и хвойные гирлянды</li><li>новогодний декор</li></ul>
               <div class="tag-row"><a class="tag" href="./arenda-svetodiodnyx-izdelij/">Гирлянды</a><a class="tag" href="./novogodnyaya-el-v-arendu/">Новогодние ёлки и хвойные гирлянды</a><a class="tag" href="./arenda/">Новогодний декор</a></div>
               <a class="service-link" href="./arenda/">Посмотреть аренду →</a>
@@ -544,7 +546,7 @@
             <span class="service-num">06</span>
             <div class="service-content">
               <h3>Дополнительно</h3>
-              <p>Продажа гирлянд: бахрома, занавесы, хвойные гирлянды, светодиодные нити и ретро-гирлянды. Производство на заказ: светодиодные праздничные конструкции, консоли и мотивы, световые фигуры оленей и персонажей.</p>
+              <p>Подбор и изготовление декоративного оформления. Производство и продажа тематических фотозон, праздничных конструкций, световых фигур оленей.</p>
               <ul class="service-meta"><li>производство</li><li>продажа</li><li>индивидуальный декор</li></ul>
               <div class="tag-row"><a class="tag" href="./svetovie-konstrukcii/">Производство</a><a class="tag" href="./assortiment/">Продажа</a><a class="tag" href="./svetodiodnue-motuvu/">Индивидуальный декор</a></div>
               <a class="service-link" href="./assortiment/">Перейти в ассортимент →</a>
@@ -577,9 +579,9 @@
     </section>
 
     <section class="partners">
-      <div class="container partners-row reveal">
-        <h2>Наши партнёры</h2>
-        <div class="partners-strip"><div class="partner-name">Газпромбанк</div><div class="partner-name">Ла Маре</div><div class="partner-name">Банк России</div><div class="partner-name">Pet Nat</div><div class="partner-name">Бахрушинский театральный музей</div></div>
+      <div class="container reveal">
+        <div class="partners-head"><h2>Наши партнёры</h2><p>Компании, с которыми мы успешно сотрудничаем</p></div>
+        <div class="partners-grid"><figure class="partner"><div class="partner-logo"><img src="./assets/images/partners/gazprombank.jpg" alt="Логотип Газпромбанк" loading="lazy"></div><figcaption>Газпромбанк</figcaption></figure><figure class="partner"><div class="partner-logo partner-logo--text">Банк России</div><figcaption>Банк России</figcaption></figure><figure class="partner"><div class="partner-logo"><img src="./assets/images/partners/la-maree.jpg" alt="Логотип La Marée" loading="lazy"></div><figcaption>La Marée</figcaption></figure><figure class="partner"><div class="partner-logo"><img src="./assets/images/partners/pet-nat.jpg" alt="Логотип Pét-Nat" loading="lazy"></div><figcaption>Pét-Nat</figcaption></figure><figure class="partner"><div class="partner-logo"><img src="./assets/images/partners/bahrushinsky.jpg" alt="Логотип Бахрушинский музей" loading="lazy"></div><figcaption>Бахрушинский музей</figcaption></figure><figure class="partner"><div class="partner-logo"><img src="./assets/images/partners/800-contemporary-steak.jpg" alt="Логотип 800°C Contemporary Steak" loading="lazy"></div><figcaption>800°C Contemporary Steak</figcaption></figure><figure class="partner"><div class="partner-logo"><img src="./assets/images/partners/mandys.jpg" alt="Логотип Caffé Mandy's" loading="lazy"></div><figcaption>Caffé Mandy's</figcaption></figure><figure class="partner"><div class="partner-logo"><img src="./assets/images/partners/mari.jpg" alt="Логотип MARi" loading="lazy"></div><figcaption>MARi</figcaption></figure><figure class="partner"><div class="partner-logo"><img src="./assets/images/partners/restomarket.jpg" alt="Логотип Resto Market" loading="lazy"></div><figcaption>Resto Market</figcaption></figure><figure class="partner"><div class="partner-logo"><img src="./assets/images/partners/uilliams.jpg" alt="Логотип Uilliam's" loading="lazy"></div><figcaption>Uilliam's</figcaption></figure><figure class="partner"><div class="partner-logo"><img src="./assets/images/partners/ulma.jpg" alt="Логотип ULMA" loading="lazy"></div><figcaption>ULMA</figcaption></figure></div>
       </div>
     </section>
 
@@ -593,9 +595,9 @@
           <p class="section-copy">Примеры наших работ: фасады, мероприятия, новогоднее оформление, аренда светового декора.</p>
         </div>
         <div class="bento">
-          <figure class="reveal"><img src="./assets/images/svetoart-decor.jpg" alt="Декоративный световой декор" loading="lazy"><figcaption><strong>Оформление мероприятий</strong><span>Световой декор</span></figcaption></figure>
-          <figure class="reveal"><img src="./assets/images/facade-project.jpg" alt="Световое оформление фасада" loading="lazy"><figcaption><strong>Фасады и входные группы</strong><span>Контурная подсветка</span></figcaption></figure>
-          <figure class="reveal"><img src="./assets/images/wedding-project.jpg" alt="Свадебное оформление светом" loading="lazy"><figcaption><strong>Свадебные площадки</strong><span>Световое оформление шатров</span></figcaption></figure>
+          <figure class="reveal"><img src="./assets/images/svetoart-decor.jpg" alt="Декоративный световой декор" loading="lazy"><figcaption><strong>Оформление мероприятий</strong><span>Варианты оформления</span></figcaption></figure>
+          <figure class="reveal"><img src="./assets/images/facade-project.jpg" alt="Световое оформление фасада" loading="lazy"><figcaption><strong>Фасады и входные группы</strong><span>Варианты оформления</span></figcaption></figure>
+          <figure class="reveal"><img src="./assets/images/wedding-project.jpg" alt="Свадебное оформление светом" loading="lazy"><figcaption><strong>Свадебные площадки</strong><span>Оформление свадеб</span></figcaption></figure>
           <figure class="reveal"><img src="./assets/images/project-evening.jpg" alt="Новогоднее оформление дома и офиса" loading="lazy"><figcaption><strong>Новогоднее оформление</strong><span>Здания, улицы, дома и офисы</span></figcaption></figure>
         </div>
         <div class="portfolio-cta">
@@ -621,7 +623,7 @@
             <p class="eyebrow">Связь</p>
             <h2><span class="only-desktop">Свяжитесь <em>с нами</em></span><span class="only-mobile">Получите расчет <em>по фото</em></span></h2>
             <p class="section-copy"><span class="only-desktop">Вы всегда можете проконсультироваться или пригласить дизайнера, отправив заявку на почту или оставив сообщение в мессенджерах. Мы свяжемся с вами в ближайшее время.</span><span class="only-mobile">Отправьте фотографию объекта, адрес и желаемые сроки. Мы предложим подходящий вариант оформления.</span></p>
-            <a class="btn btn-ghost photo-telegram" href="https://t.me/svetoART" target="_blank" rel="noopener noreferrer">Отправить фото в Telegram</a>
+            <a class="btn btn-ghost photo-telegram" href="https://t.me/svetoART" target="_blank" rel="noopener noreferrer">Отправить фото объекта в Telegram</a>
             <ul class="contact-list">
               <li><a href="tel:+79967130405">+7 (996) 713-04-05</a></li>
               <li><a href="mailto:info@svetoart.ru">info@svetoart.ru</a></li>

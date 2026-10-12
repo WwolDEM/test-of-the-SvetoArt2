@@ -46,7 +46,7 @@
   /* ---------- корень сайта (учитывает /test-of-the-SvetoArt2/ и любые подпапки) ---------- */
   var siteRoot = "/";
   try {
-    var scriptEl = document.currentScript;
+    var scriptEl = document.currentScript || document.querySelector('script[src*="review-widget.js"]');
     if (scriptEl && scriptEl.src) {
       siteRoot = new url(scriptEl.src, window.location.href).pathname.replace(/assets\/js\/review-widget\.js.*$/, "");
     }
