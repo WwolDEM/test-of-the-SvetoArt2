@@ -237,13 +237,21 @@
 
     /* ---------- statement + compare ---------- */
     .statement { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .compare-slider { position: relative; aspect-ratio: 16 / 8; overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); --pos: 50%; user-select: none; }
+    .compare-slider { position: relative; aspect-ratio: 4 / 3; max-width: 980px; margin: 0 auto; overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); --pos: 50%; user-select: none; }
     .compare-slider__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
     .compare-slider__top { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
     .compare-slider__divider { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 1px; background: var(--gold-light); box-shadow: 0 0 18px var(--gold-light); pointer-events: none; }
     .compare-slider__divider::before { content: "‹ ›"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: rgba(13,11,9,.75); border: 1px solid var(--gold); color: var(--gold-light); font-size: 18px; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
     .compare-slider__range { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
-    .compare-caption { margin-top: 18px; color: var(--muted); font-size: 13px; }
+    .compare-label {
+      position: absolute; top: 18px; z-index: 1; padding: 6px 12px; border-radius: 99px;
+      background: rgba(13,11,9,.7); border: 1px solid var(--line-strong); color: var(--text);
+      font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; pointer-events: none;
+      -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    }
+    .compare-label--before { left: 18px; }
+    .compare-label--after { right: 18px; color: var(--gold-light); border-color: rgba(226,196,142,.45); }
+    .compare-caption { margin-top: 18px; color: var(--muted); font-size: 13px; text-align: center; }
 
     /* ---------- partners ---------- */
     .partners { padding: 70px 0; border-bottom: 1px solid var(--line); }
@@ -561,20 +569,21 @@
       <div class="container">
         <div class="section-head reveal">
           <div>
-            <p class="eyebrow">Галерея</p>
+            <p class="eyebrow">До и после</p>
             <h2>Как выглядит <em>световое</em> оформление</h2>
           </div>
           <p class="section-copy">Световое декоративное оформление успешно справляется с задачей преображения объектов - из будничных оно помогает превратить их в яркие, эффектные и привлекательные на фоне прочих.</p>
         </div>
         <div class="compare-slider reveal" id="compareSlider">
-          <img class="compare-slider__img" src="./assets/images/restaurant-project.jpg" alt="Декоративное световое оформление объекта" loading="lazy">
+          <img class="compare-slider__img" src="./assets/images/do-posle-restoran-posle.jpg" alt="Ресторан после светового оформления" loading="lazy">
           <div class="compare-slider__top" aria-hidden="true">
-            <img class="compare-slider__img" src="./assets/images/gallery-light.jpg" alt="" loading="lazy">
+            <img class="compare-slider__img" src="./assets/images/do-posle-restoran-do.jpg" alt="Ресторан до светового оформления" loading="lazy">
           </div>
+          <span class="compare-label compare-label--before" aria-hidden="true">До</span><span class="compare-label compare-label--after" aria-hidden="true">После</span>
           <div class="compare-slider__divider" aria-hidden="true"></div>
           <input class="compare-slider__range" type="range" min="0" max="100" value="50" aria-label="Перетащите, чтобы сравнить фотографии светового оформления">
         </div>
-        <p class="compare-caption">Примеры декоративного светового оформления объектов</p>
+        <p class="compare-caption">Ресторан до и после светового оформления — потяните ползунок</p>
       </div>
     </section>
 
